@@ -1,4 +1,4 @@
-import './style.css';
+import '../style/style.css';
 
 function test() {
   const content = document.getElementById('content');
