@@ -1,10 +1,10 @@
-import './style.css'
+import './style.css';
 
-function test(){
-    const content = document.getElementById('content');
+function test() {
+  const content = document.getElementById('content');
 
-    content.innerHTML = "Hello";
-    content.classList.add('hello');
+  content.innerHTML = 'Hello';
+  content.classList.add('hello');
 }
 
 test();
