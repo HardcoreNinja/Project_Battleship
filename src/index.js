@@ -5,7 +5,6 @@ function test(){
 
     content.innerHTML = "Hello";
     content.classList.add('hello');
-    alert("something";
 }
 
 test();
