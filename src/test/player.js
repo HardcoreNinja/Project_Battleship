@@ -4,21 +4,26 @@ const BattleShip = require('./battleship');
 class Player {
   constructor() {
     this.gameBoard = new GameBoard();
-    this.ships = {
-      destoryers: Array(5).fill(new BattleShip('Destoyer', 2)),
-      submarine: Array(4).fill(new BattleShip('Submarine', 3)),
-      cruiser: Array(3).fill(new BattleShip('Cruiser', 3)),
-      battleship: Array(2).fill(new BattleShip('Battleship', 4)),
-      carrier: Array(1).fill(new BattleShip('Carrier', 5)),
-    };
+    this.shipMap = this.createShipMap();
+    this.activeShip = null;
   }
 
-  getGameBoard() {
-    return this.gameBoard;
+  createShipMap() {
+    const map = new Map();
+    map.set('destroyer', Array(5).fill(new BattleShip('destroyer', 2)));
+    map.set('submarine', Array(4).fill(new BattleShip('submarine', 3)));
+    map.set('cruiser', Array(3).fill(new BattleShip('cruiser', 3)));
+    map.set('battleship', Array(2).fill(new BattleShip('battleship', 4)));
+    map.set('carrier', Array(1).fill(new BattleShip('carrier', 5)));
+    return map;
   }
 
-  getShips() {
-    return this.ships;
+  selectShip(key) {
+    this.activeShip = this.shipMap.get(key).shift();
+  }
+
+  deselectShip() {
+    this.shipMap.get(this.activeShip.name).unshift(this.activeShip);
   }
 }
 
