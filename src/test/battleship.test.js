@@ -2,22 +2,22 @@ const BattleShip = require('./battleship');
 const Coordinate = require('./coordinate');
 
 test('getLength() | WORKS!', () => {
-  expect(new BattleShip(3).getLength()).toBe(3);
+  expect(new BattleShip('Destroyer', 3).getLength()).toBe(3);
 });
 
 test('getOrientation() && changeOrientation() | WORKS!', () => {
-  const battleship = new BattleShip(3);
+  const battleship = new BattleShip('Destroyer', 3);
   expect(battleship.getOrientation()).toBe(true);
   battleship.changeOrientation();
   expect(battleship.getOrientation()).toBe(false);
 });
 
 test('getCoordinates| WORKS for INVALID (RETURNS NULL ARRAY)', () => {
-  expect(new BattleShip(3).getCoordinates()).toStrictEqual([null, null, null]);
+  expect(new BattleShip('Destroyer', 3).getCoordinates()).toStrictEqual([null, null, null]);
 });
 
 test('setCoorindates()| WORKS for INVALID (RETURNS NULL ARRAY)', () => {
-  const battleship = new BattleShip(3);
+  const battleship = new BattleShip('Destroyer', 3);
   battleship.setCoordinates(new Coordinate([0, 0]));
   expect(battleship.getCoordinates()).toStrictEqual(
     [
@@ -29,7 +29,7 @@ test('setCoorindates()| WORKS for INVALID (RETURNS NULL ARRAY)', () => {
 });
 
 test('clearCoordinates()| WORKS', () => {
-  const battleship = new BattleShip(3);
+  const battleship = new BattleShip('Destroyer', 3);
   battleship.setCoordinates(new Coordinate([0, 0]));
   expect(battleship.getCoordinates()).toStrictEqual(
     [
@@ -43,7 +43,7 @@ test('clearCoordinates()| WORKS', () => {
 });
 
 test('changeOrientation()| WORKS for BOTH Horiztonal & Vertical Orientation', () => {
-  const battleship = new BattleShip(3);
+  const battleship = new BattleShip('Destroyer', 3);
   battleship.setCoordinates(new Coordinate([0, 0]));
   expect(battleship.getCoordinates()).toStrictEqual(
     [
@@ -62,4 +62,8 @@ test('changeOrientation()| WORKS for BOTH Horiztonal & Vertical Orientation', ()
       new Coordinate([0, 2]),
     ],
   );
+});
+
+test('getName()', () => {
+  expect(new BattleShip('Destroyer', 3).getName()).toBe('Destroyer');
 });

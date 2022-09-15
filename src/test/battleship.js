@@ -1,10 +1,15 @@
 const Coordinate = require('./coordinate');
 
 class BattleShip {
-  constructor(length) {
+  constructor(name, length) {
+    this.name = name;
     this.length = length;
     this.coordinateArray = Array(length).fill(null);
     this.horizontalVertical = true;
+  }
+
+  getName() {
+    return this.name;
   }
 
   getLength() {
