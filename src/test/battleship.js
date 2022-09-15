@@ -6,36 +6,20 @@ class BattleShip {
     this.horizontalVertical = true;
   }
 
-  getName() {
-    return this.name;
-  }
-
-  getLength() {
-    return this.length;
-  }
-
-  getOrientation() {
-    return this.horizontalVertical;
-  }
-
   changeOrientation() {
     this.horizontalVertical = !this.horizontalVertical;
   }
 
-  setCoordinates(coordiante) {
+  setCoordinates(coordinate) {
     for (let i = 0; i < this.coordinateArray.length; i++) {
       if (this.horizontalVertical) {
-        this.coordinateArray[i] = [coordiante.getCoordinate()[0] + i,
-          coordiante.getCoordinate()[1]];
+        this.coordinateArray[i] = [coordinate.coordinate[0] + i,
+          coordinate.coordinate[1]];
       } else {
-        this.coordinateArray[i] = [coordiante.getCoordinate()[0],
-          coordiante.getCoordinate()[1] + i];
+        this.coordinateArray[i] = [coordinate.coordinate[0],
+          coordinate.coordinate[1] + i];
       }
     }
-  }
-
-  getCoordinates() {
-    return this.coordinateArray;
   }
 
   clearCoordinates() {

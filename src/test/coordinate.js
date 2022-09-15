@@ -24,19 +24,6 @@ class Coordinate {
   setHit(hit) {
     this.hit = hit;
   }
-
-  // Getters
-  getPlayer() {
-    return this.player;
-  }
-
-  getHit() {
-    return this.hit;
-  }
-
-  getCoordinate() {
-    return this.coordinate;
-  }
 }
 
 module.exports = Coordinate;

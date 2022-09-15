@@ -40,7 +40,7 @@ class GameBoard {
 
   getIndexOfCoordinate(coordinate) {
     if (this.isCoordinateValid(coordinate)) {
-      const findCoordinate = (element) => `${element.getCoordinate()}` === `${coordinate}`;
+      const findCoordinate = (element) => `${element.coordinate}` === `${coordinate}`;
       return this.gameBoard.findIndex(findCoordinate);
     }
     return null;
@@ -75,7 +75,7 @@ class GameBoard {
   getHit(coordinate) {
     if (this.isCoordinateValid(coordinate)) {
       return this.gameBoard[
-        this.getIndexOfCoordinate(coordinate)].getHit();
+        this.getIndexOfCoordinate(coordinate)].hit;
     }
 
     return null;
