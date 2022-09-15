@@ -21,9 +21,9 @@ test('setCoorindates()| WORKS for INVALID (RETURNS NULL ARRAY)', () => {
   battleship.setCoordinates(new Coordinate([0, 0]));
   expect(battleship.getCoordinates()).toStrictEqual(
     [
-      new Coordinate([0, 0]),
-      new Coordinate([1, 0]),
-      new Coordinate([2, 0]),
+      [0, 0],
+      [1, 0],
+      [2, 0],
     ],
   );
 });
@@ -33,9 +33,9 @@ test('clearCoordinates()| WORKS', () => {
   battleship.setCoordinates(new Coordinate([0, 0]));
   expect(battleship.getCoordinates()).toStrictEqual(
     [
-      new Coordinate([0, 0]),
-      new Coordinate([1, 0]),
-      new Coordinate([2, 0]),
+      [0, 0],
+      [1, 0],
+      [2, 0],
     ],
   );
   battleship.clearCoordinates();
@@ -47,9 +47,9 @@ test('changeOrientation()| WORKS for BOTH Horiztonal & Vertical Orientation', ()
   battleship.setCoordinates(new Coordinate([0, 0]));
   expect(battleship.getCoordinates()).toStrictEqual(
     [
-      new Coordinate([0, 0]),
-      new Coordinate([1, 0]),
-      new Coordinate([2, 0]),
+      [0, 0],
+      [1, 0],
+      [2, 0],
     ],
   );
   battleship.clearCoordinates();
@@ -57,9 +57,9 @@ test('changeOrientation()| WORKS for BOTH Horiztonal & Vertical Orientation', ()
   battleship.setCoordinates(new Coordinate([0, 0]));
   expect(battleship.getCoordinates()).toStrictEqual(
     [
-      new Coordinate([0, 0]),
-      new Coordinate([0, 1]),
-      new Coordinate([0, 2]),
+      [0, 0],
+      [0, 1],
+      [0, 2],
     ],
   );
 });

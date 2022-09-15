@@ -1,5 +1,3 @@
-const Coordinate = require('./coordinate');
-
 class BattleShip {
   constructor(name, length) {
     this.name = name;
@@ -27,13 +25,11 @@ class BattleShip {
   setCoordinates(coordiante) {
     for (let i = 0; i < this.coordinateArray.length; i++) {
       if (this.horizontalVertical) {
-        this.coordinateArray[i] = new Coordinate(
-          [coordiante.getCoordinate()[0] + i, coordiante.getCoordinate()[1]],
-        );
+        this.coordinateArray[i] = [coordiante.getCoordinate()[0] + i,
+          coordiante.getCoordinate()[1]];
       } else {
-        this.coordinateArray[i] = new Coordinate(
-          [coordiante.getCoordinate()[0], coordiante.getCoordinate()[1] + i],
-        );
+        this.coordinateArray[i] = [coordiante.getCoordinate()[0],
+          coordiante.getCoordinate()[1] + i];
       }
     }
   }
