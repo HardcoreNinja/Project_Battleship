@@ -40,8 +40,6 @@ class BattleShip {
   clearCoordinates() {
     for (let i = 0; i < this.coordinateArray.length; i++) { this.coordinateArray[i] = null; }
   }
-
-  changeHit
 }
 
 module.exports = BattleShip;
