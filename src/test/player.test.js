@@ -95,31 +95,31 @@ test('placeShip | WORKS', () => {
 
   player.selectShip('carrier');
   player.changeOrientation();
-  player.placeShip([0, 0]);
+  player.placeShip([2, 0]);
 
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipName).toBe('carrier');
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).shipName).toBe('carrier');
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).shipName).toBe('carrier');
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).shipName).toBe('carrier');
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 0]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 1]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 2]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 3]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 4]).shipName).toBe('carrier');
 
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).lengthNumber).toBe(0);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).lengthNumber).toBe(1);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).lengthNumber).toBe(2);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).lengthNumber).toBe(3);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).lengthNumber).toBe(4);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 0]).lengthNumber).toBe(0);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 1]).lengthNumber).toBe(1);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 2]).lengthNumber).toBe(2);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 3]).lengthNumber).toBe(3);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 4]).lengthNumber).toBe(4);
 
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).occupied).toBe(true);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).occupied).toBe(true);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).occupied).toBe(true);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).occupied).toBe(true);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 0]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 1]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 2]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 3]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 4]).occupied).toBe(true);
 
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipHorizontalVertical).toBe(false);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).shipHorizontalVertical).toBe(false);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).shipHorizontalVertical).toBe(false);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).shipHorizontalVertical).toBe(false);
-  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 0]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 1]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 2]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 3]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 4]).shipHorizontalVertical).toBe(false);
 });
 
 test('updateShipCounts | WORKS', () => {
@@ -146,4 +146,19 @@ test('updateShipCounts | WORKS', () => {
   player.selectShip('destroyer');
   player.placeShip([0, 5]);
   expect(player.destroyerCount).toBe(0);
+});
+
+test('updateOccupiedCoordinates | Works', () => {
+  const player = new Player();
+  player.selectShip('destroyer');
+  player.placeShip([0, 0]);
+  expect(player.occupiedCoordinates[0][0].coordinate).toStrictEqual([0, 0]);
+  expect(player.occupiedCoordinates[0][1].coordinate).toStrictEqual([1, 0]);
+
+  player.selectShip('cruiser');
+  player.changeOrientation();
+  player.placeShip([2, 0]);
+  expect(player.occupiedCoordinates[1][0].coordinate).toStrictEqual([2, 0]);
+  expect(player.occupiedCoordinates[1][1].coordinate).toStrictEqual([2, 1]);
+  expect(player.occupiedCoordinates[1][2].coordinate).toStrictEqual([2, 2]);
 });

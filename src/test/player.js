@@ -11,6 +11,7 @@ class Player {
     this.cruiserCount = this.shipMap.get('cruiser').length;
     this.battleshipCount = this.shipMap.get('battleship').length;
     this.carrierCount = this.shipMap.get('carrier').length;
+    this.occupiedCoordinates = [];
   }
 
   createShipMap() {
@@ -56,6 +57,7 @@ class Player {
 
   isCoordinateValid(coordinate) {
     if (this.activeShip !== null
+      && this.gameBoard.getCoordinateFromCoordinate(coordinate).occupied === false
       && coordinate[0] >= 0
       && coordinate[0] <= 9
       && coordinate[1] >= 0
@@ -63,8 +65,13 @@ class Player {
     return false;
   }
 
+  updateOccupiedCoordinates(coordinateArray) {
+    this.occupiedCoordinates.push(coordinateArray);
+  }
+
   placeShip(coordinate) {
     if (this.isCoordinateValid(coordinate)) {
+      const tempArray = [];
       for (let i = 0; i < this.activeShip.length; i++) {
         if (this.activeShip.horizontalVertical === true) {
           const newCoordinate = [coordinate[0] + i, coordinate[1]];
@@ -84,6 +91,9 @@ class Player {
           this.gameBoard.getCoordinateFromCoordinate(
             newCoordinate,
           ).shipHorizontalVertical = this.activeShip.horizontalVertical;
+          tempArray.push(this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ));
         } else if (this.activeShip.horizontalVertical === false) {
           const newCoordinate = [coordinate[0], coordinate[1] + i];
 
@@ -102,8 +112,13 @@ class Player {
           this.gameBoard.getCoordinateFromCoordinate(
             newCoordinate,
           ).shipHorizontalVertical = this.activeShip.horizontalVertical;
+
+          tempArray.push(this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ));
         }
       }
+      this.updateOccupiedCoordinates(tempArray);
     }
     this.activeShip = null;
   }
