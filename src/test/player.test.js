@@ -65,3 +65,50 @@ test('deselectShip & selectShip | WORKS', () => {
 
   expect(player.shipMap.get('carrier').length).toBe(1);
 });
+
+test('placeShip | WORKS', () => {
+  const player = new Player();
+
+  player.selectShip('destroyer');
+  player.placeShip([0, 0]);
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipName).toBe('destroyer');
+  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).shipName).toBe('destroyer');
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).lengthNumber).toBe(0);
+  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).lengthNumber).toBe(1);
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).occupied).toBe(true);
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipHorizontalVertical).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).shipHorizontalVertical).toBe(true);
+
+  player.selectShip('carrier');
+  player.changeOrientation();
+  player.placeShip([0, 0]);
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).shipName).toBe('carrier');
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).shipName).toBe('carrier');
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).lengthNumber).toBe(0);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).lengthNumber).toBe(1);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).lengthNumber).toBe(2);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).lengthNumber).toBe(3);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).lengthNumber).toBe(4);
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).occupied).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).occupied).toBe(true);
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 1]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 2]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).shipHorizontalVertical).toBe(false);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).shipHorizontalVertical).toBe(false);
+});

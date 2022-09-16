@@ -25,6 +25,64 @@ class Player {
   deselectShip() {
     this.shipMap.get(this.activeShip.name).unshift(this.activeShip);
   }
+
+  changeOrientation() {
+    this.activeShip.horizontalVertical = !this.activeShip.horizontalVertical;
+  }
+
+  isCoordinateValid(coordinate) {
+    if (this.activeShip !== null
+      && coordinate[0] >= 0
+      && coordinate[0] <= 9
+      && coordinate[1] >= 0
+      && coordinate[1] <= 9) { return true; }
+    return false;
+  }
+
+  placeShip(coordinate) {
+    if (this.isCoordinateValid(coordinate)) {
+      for (let i = 0; i < this.activeShip.length; i++) {
+        if (this.activeShip.horizontalVertical === true) {
+          const newCoordinate = [coordinate[0] + i, coordinate[1]];
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).lengthNumber = i;
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).occupied = true;
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).shipName = this.activeShip.name;
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).shipHorizontalVertical = this.activeShip.horizontalVertical;
+        } else if (this.activeShip.horizontalVertical === false) {
+          const newCoordinate = [coordinate[0], coordinate[1] + i];
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).lengthNumber = i;
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).occupied = true;
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).shipName = this.activeShip.name;
+
+          this.gameBoard.getCoordinateFromCoordinate(
+            newCoordinate,
+          ).shipHorizontalVertical = this.activeShip.horizontalVertical;
+        }
+      }
+    }
+    this.activeShip = null;
+  }
 }
 
 module.exports = Player;

@@ -3,6 +3,9 @@ class Coordinate {
     if (this.checkValid(coordinate)) { this.coordinate = coordinate; } else this.coordinate = null;
     this.hit = false;
     this.occupied = false;
+    this.lengthNumber = 0;
+    this.shipName = '';
+    this.shipHorizontalVertical = true;
     this.player = null;
   }
 
