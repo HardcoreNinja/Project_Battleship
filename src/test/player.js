@@ -6,6 +6,11 @@ class Player {
     this.gameBoard = new GameBoard();
     this.shipMap = this.createShipMap();
     this.activeShip = null;
+    this.destroyerCount = this.shipMap.get('destroyer').length;
+    this.submarineCount = this.shipMap.get('submarine').length;
+    this.cruiserCount = this.shipMap.get('cruiser').length;
+    this.battleshipCount = this.shipMap.get('battleship').length;
+    this.carrierCount = this.shipMap.get('carrier').length;
   }
 
   createShipMap() {
@@ -18,14 +23,31 @@ class Player {
     return map;
   }
 
+  updateShipCounts(key) {
+    if (key === 'destroyer') {
+      this.destroyerCount = this.shipMap.get(key).length;
+    } else if (key === 'submarine') {
+      this.submarineCount = this.shipMap.get(key).length;
+    } else if (key === 'cruiser') {
+      this.cruiserCount = this.shipMap.get(key).length;
+    } else if (key === 'battleship') {
+      this.battleshipCount = this.shipMap.get(key).length;
+    } else if (key === 'carrier') {
+      this.carrierCount = this.shipMap.get(key).length;
+    }
+  }
+
   selectShip(key) {
     if (this.shipMap.get(key).length !== 0) {
       this.activeShip = this.shipMap.get(key).shift();
     } else { this.activeShip = null; }
+    this.updateShipCounts(key);
   }
 
   deselectShip() {
+    const key = this.activeShip.name;
     this.shipMap.get(this.activeShip.name).unshift(this.activeShip);
+    this.updateShipCounts(key);
   }
 
   changeOrientation() {

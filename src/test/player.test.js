@@ -121,3 +121,29 @@ test('placeShip | WORKS', () => {
   expect(player.gameBoard.getCoordinateFromCoordinate([0, 3]).shipHorizontalVertical).toBe(false);
   expect(player.gameBoard.getCoordinateFromCoordinate([0, 4]).shipHorizontalVertical).toBe(false);
 });
+
+test('updateShipCounts | WORKS', () => {
+  const player = new Player();
+
+  expect(player.carrierCount).toBe(1);
+  player.selectShip('carrier');
+  player.placeShip([0, 0]);
+  expect(player.carrierCount).toBe(0);
+
+  expect(player.destroyerCount).toBe(5);
+  player.selectShip('destroyer');
+  player.placeShip([0, 1]);
+  expect(player.destroyerCount).toBe(4);
+  player.selectShip('destroyer');
+  player.placeShip([0, 2]);
+  expect(player.destroyerCount).toBe(3);
+  player.selectShip('destroyer');
+  player.placeShip([0, 3]);
+  expect(player.destroyerCount).toBe(2);
+  player.selectShip('destroyer');
+  player.placeShip([0, 4]);
+  expect(player.destroyerCount).toBe(1);
+  player.selectShip('destroyer');
+  player.placeShip([0, 5]);
+  expect(player.destroyerCount).toBe(0);
+});
