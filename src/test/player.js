@@ -19,7 +19,9 @@ class Player {
   }
 
   selectShip(key) {
-    this.activeShip = this.shipMap.get(key).shift();
+    if (this.shipMap.get(key).length !== 0) {
+      this.activeShip = this.shipMap.get(key).shift();
+    } else { this.activeShip = null; }
   }
 
   deselectShip() {

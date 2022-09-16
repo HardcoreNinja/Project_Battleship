@@ -66,6 +66,15 @@ test('deselectShip & selectShip | WORKS', () => {
   expect(player.shipMap.get('carrier').length).toBe(1);
 });
 
+test('selectShip | WORKS (Returns Null) when out of ships!', () => {
+  const player = new Player();
+  player.selectShip('carrier');
+  expect(player.activeShip).toStrictEqual(new BattleShip('carrier', 5));
+  player.placeShip([0, 0]);
+  player.selectShip('carrier');
+  expect(player.activeShip).toBe(null);
+});
+
 test('placeShip | WORKS', () => {
   const player = new Player();
 
