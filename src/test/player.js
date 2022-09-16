@@ -73,54 +73,32 @@ class Player {
     if (this.isCoordinateValid(coordinate)) {
       const tempArray = [];
       for (let i = 0; i < this.activeShip.length; i++) {
-        if (this.activeShip.horizontalVertical === true) {
-          const newCoordinate = [coordinate[0] + i, coordinate[1]];
+        const newCoordinate = (this.activeShip.horizontalVertical)
+          ? [coordinate[0] + i, coordinate[1]] : [coordinate[0], coordinate[1] + i];
 
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).lengthNumber = i;
+        this.gameBoard.getCoordinateFromCoordinate(
+          newCoordinate,
+        ).lengthNumber = i;
 
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).occupied = true;
+        this.gameBoard.getCoordinateFromCoordinate(
+          newCoordinate,
+        ).occupied = true;
 
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).shipName = this.activeShip.name;
+        this.gameBoard.getCoordinateFromCoordinate(
+          newCoordinate,
+        ).shipName = this.activeShip.name;
 
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).shipHorizontalVertical = this.activeShip.horizontalVertical;
-          tempArray.push(this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ));
-        } else if (this.activeShip.horizontalVertical === false) {
-          const newCoordinate = [coordinate[0], coordinate[1] + i];
+        this.gameBoard.getCoordinateFromCoordinate(
+          newCoordinate,
+        ).shipHorizontalVertical = this.activeShip.horizontalVertical;
 
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).lengthNumber = i;
-
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).occupied = true;
-
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).shipName = this.activeShip.name;
-
-          this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ).shipHorizontalVertical = this.activeShip.horizontalVertical;
-
-          tempArray.push(this.gameBoard.getCoordinateFromCoordinate(
-            newCoordinate,
-          ));
-        }
+        tempArray.push(this.gameBoard.getCoordinateFromCoordinate(
+          newCoordinate,
+        ));
       }
       this.updateOccupiedCoordinates(tempArray);
+      this.activeShip = null;
     }
-    this.activeShip = null;
   }
 }
 
