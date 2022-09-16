@@ -100,6 +100,21 @@ class Player {
       this.activeShip = null;
     }
   }
+
+  receiveFire(coordinate) {
+    const tempCoordinate = this.gameBoard.getCoordinateFromCoordinate(coordinate);
+
+    if (tempCoordinate.occupied === true) {
+      for (let i = 0; i < this.occupiedCoordinates.length; i++) {
+        for (let j = 0; j < this.occupiedCoordinates[i].length; j++) {
+          if (tempCoordinate.coordinate === this.occupiedCoordinates[i][j].coordinate) {
+            this.occupiedCoordinates[i][j].hit = true;
+          }
+        }
+      }
+    }
+    this.gameBoard.getCoordinateFromCoordinate(coordinate).hit = true;
+  }
 }
 
 module.exports = Player;

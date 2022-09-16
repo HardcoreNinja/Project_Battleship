@@ -162,3 +162,19 @@ test('updateOccupiedCoordinates | Works', () => {
   expect(player.occupiedCoordinates[1][1].coordinate).toStrictEqual([2, 1]);
   expect(player.occupiedCoordinates[1][2].coordinate).toStrictEqual([2, 2]);
 });
+
+test('recieveFire | Working', () => {
+  const player = new Player();
+  player.selectShip('destroyer');
+  player.placeShip([0, 0]);
+
+  player.receiveFire([0, 0]);
+  expect(player.occupiedCoordinates[0][0].hit).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).hit).toBe(true);
+
+  player.receiveFire([1, 0]);
+  expect(player.occupiedCoordinates[0][1].hit).toBe(true);
+  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).hit).toBe(true);
+
+  expect(player.gameBoard.getCoordinateFromCoordinate([2, 0]).hit).toBe(false);
+});
