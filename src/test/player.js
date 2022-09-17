@@ -16,10 +16,10 @@ class Player {
 
   createShipMap() {
     const map = new Map();
-    map.set('destroyer', Array(5).fill(new BattleShip('destroyer', 2)));
-    map.set('submarine', Array(4).fill(new BattleShip('submarine', 3)));
-    map.set('cruiser', Array(3).fill(new BattleShip('cruiser', 3)));
-    map.set('battleship', Array(2).fill(new BattleShip('battleship', 4)));
+    map.set('destroyer', Array(1).fill(new BattleShip('destroyer', 2)));
+    map.set('submarine', Array(1).fill(new BattleShip('submarine', 3)));
+    map.set('cruiser', Array(1).fill(new BattleShip('cruiser', 3)));
+    map.set('battleship', Array(1).fill(new BattleShip('battleship', 4)));
     map.set('carrier', Array(1).fill(new BattleShip('carrier', 5)));
     return map;
   }
@@ -38,11 +38,17 @@ class Player {
     }
   }
 
+  checkToDeleteShipMapObject(key) {
+    if (this.shipMap.get(key).length === 0) { this.shipMap.delete(key); }
+  }
+
   selectShip(key) {
-    if (this.shipMap.get(key).length !== 0) {
-      this.activeShip = this.shipMap.get(key).shift();
-    } else { this.activeShip = null; }
-    this.updateShipCounts(key);
+    if (this.shipMap.has(key)) {
+      if (this.shipMap.get(key).length !== 0) {
+        this.activeShip = this.shipMap.get(key).shift();
+        this.updateShipCounts(key);
+      } else { this.activeShip = null; }
+    }
   }
 
   deselectShip() {
@@ -97,6 +103,7 @@ class Player {
         ));
       }
       this.updateOccupiedCoordinates(tempArray);
+      this.checkToDeleteShipMapObject(this.activeShip.name);
       this.activeShip = null;
     }
   }
