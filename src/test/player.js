@@ -115,6 +115,16 @@ class Player {
     }
     this.gameBoard.getCoordinateFromCoordinate(coordinate).hit = true;
   }
+
+  checkPlayerLost() {
+    for (let i = 0; i < this.occupiedCoordinates.length; i++) {
+      for (let j = 0; j < this.occupiedCoordinates[i].length; j++) {
+        if (this.occupiedCoordinates[i][j].hit === false) return false;
+      }
+    }
+
+    return true;
+  }
 }
 
 module.exports = Player;

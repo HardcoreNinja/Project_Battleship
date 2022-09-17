@@ -178,3 +178,13 @@ test('recieveFire | Working', () => {
 
   expect(player.gameBoard.getCoordinateFromCoordinate([2, 0]).hit).toBe(false);
 });
+
+test('checkPlayerLost | Working', () => {
+  const player = new Player();
+  player.selectShip('destroyer');
+  player.placeShip([0, 0]);
+  player.receiveFire([0, 0]);
+  player.receiveFire([1, 0]);
+
+  expect(player.checkPlayerLost()).toBe(true);
+});
