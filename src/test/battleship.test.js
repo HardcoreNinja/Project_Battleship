@@ -1,5 +1,4 @@
 const BattleShip = require('./battleship');
-// const Coordinate = require('./coordinate');
 
 test('length | WORKS!', () => {
   expect(new BattleShip('Destroyer', 3).length).toBe(3);
