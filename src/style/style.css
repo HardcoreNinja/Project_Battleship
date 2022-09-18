@@ -26,6 +26,9 @@
 #shipBoard{
     grid-area: shipBoard;
     background: red;
+    display: flex;
+    place-content: center center;
+    flex-flow: row wrap;
 }
 
 #hud{
@@ -36,4 +39,30 @@
 #missleBoard{
     grid-area: missleBoard;
     background: red;
+}
+
+#boardContainer{
+    display: flex;
+    background: orange;
+    place-content: flex-start flex-start;
+    place-items: flex-start flex-start;
+    flex-flow: row wrap;
+    min-width: 340px;
+    min-height: 340px;
+    max-width: 340px;
+    max-height: 340px;
+}
+
+.boardSquare{
+    width: 32px;
+    height: 32px;
+    background: blue;
+    border: 1px solid white;
+    transition: 0.75s all;
+}
+
+.boardSquare:hover{
+    transform: scale(1.1);
+    background: magenta;
+    
 }
