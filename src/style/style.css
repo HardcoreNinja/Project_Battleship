@@ -1,3 +1,39 @@
-.hello{
-    color:red;
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 7fr;
+    background: orange;
+    grid-template-areas: 
+    'nav nav nav'
+    'shipBoard hud missleBoard'
+    ;
+    min-width: 100vw;
+    min-height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+#nav{
+    grid-area: nav;
+    background: magenta;
+}
+
+#shipBoard{
+    grid-area: shipBoard;
+    background: red;
+}
+
+#hud{
+    grid-area: hud;
+    background: greenyellow;
+}
+
+#missleBoard{
+    grid-area: missleBoard;
+    background: red;
 }
