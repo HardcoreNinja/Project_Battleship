@@ -34,6 +34,12 @@
 #hud{
     grid-area: hud;
     background: greenyellow;
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center flex-start;
+    place-items: center flex-start;
+    gap: 20px;
+    padding: 20px;
 }
 
 #missleBoard{
@@ -70,7 +76,14 @@
     
 }
 
-#shipContainer{
+#shipsContainer{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
+}
+
+#ships{
     display: flex;
     background: orange;
     place-content: center center;
@@ -78,7 +91,6 @@
     flex-flow: column nowrap;
     gap: 10px;
     height: auto;
-    margin: 20px;
     min-width: 240px;
     min-height: 240px;
 }
@@ -185,5 +197,24 @@
     border-top-right-radius: 25%;
     border-bottom-right-radius: 25%;
     background-color: red;
+}
+
+#orientationButtonContainer{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
+}
+#orientationButton{
+    display: flex;
+    width: 160px;
+    height: 32px;
+}
+
+button{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
 }
 

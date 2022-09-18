@@ -1,4 +1,4 @@
 const createDiv = () => document.createElement('div');
-
-// eslint-disable-next-line import/prefer-default-export
-export { createDiv };
+const createButton = () => document.createElement('button');
+const createH1 = () => document.createElement('h1');
+export { createDiv, createButton, createH1 };

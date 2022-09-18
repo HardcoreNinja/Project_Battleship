@@ -12,7 +12,6 @@ function createGrid() {
 
   const hud = createDiv();
   hud.setAttribute('id', 'hud');
-  hud.innerHTML = 'hud';
 
   const missleBoard = createDiv();
   missleBoard.setAttribute('id', 'missleBoard');

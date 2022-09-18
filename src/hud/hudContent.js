@@ -1,12 +1,11 @@
-import { createDiv } from '../reusables/elements';
+import { createDiv, createButton } from '../reusables/elements';
 import { getHud } from '../reusables/gridItems';
-import { selectShip } from './hudLogic';
+import { changeOrientation, selectShip } from './hudLogic';
 
 function addShips(container) {
   const numShips = 5;
   for (let i = 0; i < numShips; i++) {
     const ship = createDiv();
-
     if (i === 0) {
       ship.setAttribute('id', 'destroyer');
       const destroyerLength = createDiv();
@@ -44,11 +43,32 @@ function addShips(container) {
   }
 }
 
-function createShipContainer() {
+const createships = () => {
   const container = createDiv();
-  container.setAttribute('id', 'shipContainer');
-  addShips(container);
-  getHud().append(container);
+  container.setAttribute('id', 'shipsContainer');
+  const ships = createDiv();
+  ships.setAttribute('id', 'ships');
+  addShips(ships);
+
+  container.append('Ships', ships);
+  return container;
+};
+const createOrientationButton = () => {
+  const container = createDiv();
+  container.setAttribute('id', 'orientationButtonContainer');
+
+  const button = createButton();
+  button.disabled = 'true';
+  button.setAttribute('id', 'orientationButton');
+  button.innerHTML = 'Horizontal';
+  button.addEventListener('mousedown', changeOrientation);
+
+  container.append('Orientation', button);
+  return container;
+};
+
+function appendToHUD() {
+  getHud().append(createOrientationButton(), createships());
 }
 
-createShipContainer();
+appendToHUD();
