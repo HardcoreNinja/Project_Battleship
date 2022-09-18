@@ -1,5 +1,6 @@
 import { createDiv } from '../reusables/elements';
 import { getHud } from '../reusables/gridItems';
+import { selectShip } from './hudLogic';
 
 function addShips(container) {
   const numShips = 5;
@@ -38,6 +39,7 @@ function addShips(container) {
       container.append('Carrier');
     }
 
+    ship.addEventListener('mousedown', selectShip);
     container.append(ship);
   }
 }

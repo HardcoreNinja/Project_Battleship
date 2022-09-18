@@ -54,6 +54,7 @@ class Player {
   deselectShip() {
     const key = this.activeShip.name;
     this.shipMap.get(this.activeShip.name).unshift(this.activeShip);
+    this.activeShip = null;
     this.updateShipCounts(key);
   }
 
