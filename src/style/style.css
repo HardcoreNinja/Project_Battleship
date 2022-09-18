@@ -5,12 +5,12 @@
 
 #content{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 7fr;
     background: orange;
     grid-template-areas: 
-    'nav nav nav'
-    'shipBoard hud missleBoard'
+    'nav nav'
+    'shipBoard hud'
     ;
     min-width: 100vw;
     min-height: 100vh;
@@ -28,7 +28,10 @@
     background: red;
     display: flex;
     place-content: center center;
+    place-items: center center;
     flex-flow: row wrap;
+
+    gap: 20px;
 }
 
 #hud{
@@ -40,14 +43,6 @@
     place-items: center flex-start;
     gap: 20px;
     padding: 20px;
-}
-
-#missleBoard{
-    grid-area: missleBoard;
-    background: red;
-    display: flex;
-    place-content: center center;
-    flex-flow: row wrap;
 }
 
 .boardContainer{
@@ -74,6 +69,22 @@
     transform: scale(1.1);
     background: magenta;
     
+}
+
+#missileGridContainer{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
+    padding: 5px;
+}
+
+#shipGridContainer{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
+    padding: 5px;
 }
 
 #shipsContainer{
