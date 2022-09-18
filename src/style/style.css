@@ -69,3 +69,121 @@
     background: magenta;
     
 }
+
+#shipContainer{
+    display: flex;
+    background: orange;
+    place-content: center center;
+    place-items: center center;
+    flex-flow: column nowrap;
+    gap: 10px;
+    height: auto;
+    margin: 20px;
+    min-width: 240px;
+    min-height: 240px;
+}
+
+#destroyer{
+    display: flex;
+    place-content: center flex-start;
+    place-items: center flex-start;
+    width: 32px;
+    height: 32px;
+    background: blue;
+    border: 1px solid transparent;
+}
+
+.destroyerIcon{
+    width: 30px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%;
+    background-color: red;
+}
+
+#submarine{
+    display: flex;
+    place-content: center center;
+    place-items: center center;
+    flex-flow: row wrap;
+    width: 64px;
+    height: 32px;
+    background: blue;
+    border: 1px solid transparent;
+}
+
+.submarineIcon{
+    width: 60px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+    background-color: red;
+}
+
+#cruiser{
+    display: flex;
+    place-content: center center;
+    place-items: center center;
+    flex-flow: row wrap;
+    width: 96px;
+    height: 32px;
+    background: blue;
+    border: 1px solid transparent;
+}
+
+.cruiserIcon{
+    width: 94px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+    background-color: red;
+}
+
+#battleship{
+    display: flex;
+    place-content: center center;
+    place-items: center center;
+    flex-flow: row wrap;
+    width: 128px;
+    height: 32px;
+    background: blue;
+    border: 1px solid transparent;
+}
+
+.battleshipIcon{
+    width: 126px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+    background-color: red;
+}
+
+#carrier{
+    display: flex;
+    place-content: center center;
+    place-items: center center;
+    flex-flow: row wrap;
+    width: 160px;
+    height: 32px;
+    background: blue;
+    border: 1px solid transparent;
+}
+
+.carrierIcon{
+    width: 158px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 25%;
+    border-bottom-right-radius: 25%;
+    background-color: red;
+}
+
