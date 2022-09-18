@@ -8,8 +8,8 @@ test('gameBoard | WORKS (Returns GameBoard', () => {
 
 test('shipMap | WORKS (Returns GameBoard', () => {
   const map = new Map();
-  map.set('destroyer', Array(1).fill(new BattleShip('destroyer', 2)));
-  map.set('submarine', Array(1).fill(new BattleShip('submarine', 3)));
+  map.set('destroyer', Array(1).fill(new BattleShip('destroyer', 1)));
+  map.set('submarine', Array(1).fill(new BattleShip('submarine', 2)));
   map.set('cruiser', Array(1).fill(new BattleShip('cruiser', 3)));
   map.set('battleship', Array(1).fill(new BattleShip('battleship', 4)));
   map.set('carrier', Array(1).fill(new BattleShip('carrier', 5)));
@@ -21,7 +21,7 @@ test('deselectShip & selectShip | WORKS', () => {
   expect(player.activeShip).toBe(null);
 
   player.selectShip('destroyer');
-  expect(player.activeShip).toStrictEqual(new BattleShip('destroyer', 2));
+  expect(player.activeShip).toStrictEqual(new BattleShip('destroyer', 1));
 
   expect(player.destroyerCount).toBe(0);
 
@@ -30,7 +30,7 @@ test('deselectShip & selectShip | WORKS', () => {
   expect(player.destroyerCount).toBe(1);
 
   player.selectShip('submarine');
-  expect(player.activeShip).toStrictEqual(new BattleShip('submarine', 3));
+  expect(player.activeShip).toStrictEqual(new BattleShip('submarine', 2));
 
   expect(player.submarineCount).toBe(0);
 
@@ -82,16 +82,12 @@ test('placeShip | WORKS', () => {
   player.placeShip([0, 0]);
 
   expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipName).toBe('destroyer');
-  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).shipName).toBe('destroyer');
 
   expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).lengthNumber).toBe(0);
-  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).lengthNumber).toBe(1);
 
   expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).occupied).toBe(true);
-  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).occupied).toBe(true);
 
   expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).shipHorizontalVertical).toBe(true);
-  expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).shipHorizontalVertical).toBe(true);
 
   player.selectShip('carrier');
   player.changeOrientation();
@@ -141,7 +137,6 @@ test('updateOccupiedCoordinates | Works', () => {
   player.selectShip('destroyer');
   player.placeShip([0, 0]);
   expect(player.occupiedCoordinates[0][0].coordinate).toStrictEqual([0, 0]);
-  expect(player.occupiedCoordinates[0][1].coordinate).toStrictEqual([1, 0]);
 
   player.selectShip('cruiser');
   player.changeOrientation();
@@ -161,7 +156,6 @@ test('recieveFire | Working', () => {
   expect(player.gameBoard.getCoordinateFromCoordinate([0, 0]).hit).toBe(true);
 
   player.receiveFire([1, 0]);
-  expect(player.occupiedCoordinates[0][1].hit).toBe(true);
   expect(player.gameBoard.getCoordinateFromCoordinate([1, 0]).hit).toBe(true);
 
   expect(player.gameBoard.getCoordinateFromCoordinate([2, 0]).hit).toBe(false);
@@ -172,14 +166,13 @@ test('checkPlayerLost() | Working Sends TRUE if all ships in this.occupiedCoordi
   player.selectShip('destroyer');
   player.placeShip([0, 0]);
   player.receiveFire([0, 0]);
-  player.receiveFire([1, 0]);
 
   expect(player.checkPlayerLost()).toBe(true);
 });
 
 test('checkPlayerLost() | Working Sends FALSE if ships in this.occupiedCoordinates() are alive', () => {
   const player = new Player();
-  player.selectShip('destroyer');
+  player.selectShip('submarine');
   player.placeShip([0, 0]);
   player.receiveFire([0, 0]);
   player.receiveFire([2, 0]);

@@ -16,8 +16,8 @@ class Player {
 
   createShipMap() {
     const map = new Map();
-    map.set('destroyer', Array(1).fill(new BattleShip('destroyer', 2)));
-    map.set('submarine', Array(1).fill(new BattleShip('submarine', 3)));
+    map.set('destroyer', Array(1).fill(new BattleShip('destroyer', 1)));
+    map.set('submarine', Array(1).fill(new BattleShip('submarine', 2)));
     map.set('cruiser', Array(1).fill(new BattleShip('cruiser', 3)));
     map.set('battleship', Array(1).fill(new BattleShip('battleship', 4)));
     map.set('carrier', Array(1).fill(new BattleShip('carrier', 5)));
