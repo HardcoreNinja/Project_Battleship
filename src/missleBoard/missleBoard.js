@@ -1,9 +1,9 @@
-import { getShipBoard } from '../reusables/gridItems';
 import { createDiv } from '../reusables/elements';
+import { getMissleBoard } from '../reusables/gridItems';
 
-function createShipBoard() {
+function createMissleBoard() {
   const board = createDiv();
-  board.setAttribute('id', 'shipGrid');
+  board.setAttribute('id', 'missleGrid');
   board.classList.add('boardContainer');
   let counter = 0;
 
@@ -18,7 +18,7 @@ function createShipBoard() {
     }
   }
 
-  getShipBoard().append(board);
+  getMissleBoard().append(board);
 }
 
-createShipBoard();
+createMissleBoard();

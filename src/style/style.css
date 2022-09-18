@@ -39,9 +39,12 @@
 #missleBoard{
     grid-area: missleBoard;
     background: red;
+    display: flex;
+    place-content: center center;
+    flex-flow: row wrap;
 }
 
-#boardContainer{
+.boardContainer{
     display: flex;
     background: orange;
     place-content: flex-start flex-start;
