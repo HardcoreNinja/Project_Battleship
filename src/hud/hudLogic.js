@@ -38,34 +38,34 @@ function setSelectedShip(activeShip) {
   clearSelectedShip();
   const selectedShip = document.getElementById('selectedShip');
   const container = createDiv();
-  container.setAttribute('id', 'shipsContainer');
+  container.setAttribute('id', 'selected_ShipContainer');
   const ship = createDiv();
   if (activeShip.name === 'destroyer') {
-    ship.setAttribute('id', 'destroyer');
+    ship.setAttribute('id', 'selected_destroyer');
     const destroyerIcon = createDiv();
     destroyerIcon.classList.add('destroyerIcon');
     ship.append(destroyerIcon);
     container.append('Destroyer');
   } else if (activeShip.name === 'submarine') {
-    ship.setAttribute('id', 'submarine');
+    ship.setAttribute('id', 'selected_submarine');
     const submarineIcon = createDiv();
     submarineIcon.classList.add('submarineIcon');
     ship.append(submarineIcon);
     container.append('Submarine');
   } else if (activeShip.name === 'cruiser') {
-    ship.setAttribute('id', 'cruiser');
+    ship.setAttribute('id', 'selected_cruiser');
     const cruiserIcon = createDiv();
     cruiserIcon.classList.add('cruiserIcon');
     ship.append(cruiserIcon);
     container.append('Cruiser');
   } else if (activeShip.name === 'battleship') {
-    ship.setAttribute('id', 'battleship');
+    ship.setAttribute('id', 'selected_battleship');
     const battleshipIcon = createDiv();
     battleshipIcon.classList.add('battleshipIcon');
     ship.append(battleshipIcon);
     container.append('Battleship');
   } else if (activeShip.name === 'carrier') {
-    ship.setAttribute('id', 'carrier');
+    ship.setAttribute('id', 'selected_carrier');
     const carrierIcon = createDiv();
     carrierIcon.classList.add('carrierIcon');
     ship.append(carrierIcon);
@@ -100,12 +100,15 @@ function selectShip() {
 }
 
 function changeOrientation() {
+  const activeShip = document.getElementById(`selected_${player1.activeShip.name}`);
   if (player1.activeShip !== null) {
     player1.changeOrientation();
     if (player1.activeShip.horizontalVertical) {
       this.innerHTML = 'Horizontal';
+      activeShip.style.transform = 'rotate(.25turn)';
     } else {
       this.innerHTML = 'Vertical';
+      activeShip.style.transform = 'rotate(0turn)';
     }
   }
 }

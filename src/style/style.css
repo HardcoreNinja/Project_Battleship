@@ -139,7 +139,8 @@
     min-height: 25%;
 }
 
-#destroyer{
+#destroyer,
+#selected_destroyer{
     display: flex;
     place-content: center flex-start;
     place-items: center flex-start;
@@ -159,7 +160,8 @@
     background-color: red;
 }
 
-#submarine{
+#submarine,
+#selected_submarine{
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -180,7 +182,8 @@
     background-color: red;
 }
 
-#cruiser{
+#cruiser,
+#selected_cruiser{
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -201,7 +204,8 @@
     background-color: red;
 }
 
-#battleship{
+#battleship,
+#selected_battleship{
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -222,7 +226,8 @@
     background-color: red;
 }
 
-#carrier{
+#carrier,
+#selected_carrier{
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -271,11 +276,19 @@ button{
     place-items: center center;
 }
 
-#selectedShip{
+#selected_ShipContainer{
     display: flex;
     flex-flow: column wrap;
     place-content: center center;
     place-items: center center;
+    gap: 70px;
+}
+
+#selectedShip{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center flex-start;
+    place-items: center flex-start;
     background: magenta;
     width: 200px;
     height: 200px;
