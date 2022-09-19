@@ -70,6 +70,7 @@ const createOrientationButton = () => {
 function createSelectedShip() {
   const selectedShip = createDiv();
   selectedShip.setAttribute('id', 'selectedShip');
+  selectedShip.innerHTML = 'No Ship Selected...';
   return selectedShip;
 }
 
