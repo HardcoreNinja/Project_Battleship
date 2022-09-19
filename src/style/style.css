@@ -35,7 +35,7 @@
     ;
 }
 
-.shipBoardOverlay{
+#shipBoardOverlay{
     grid-row-start: 1;
     grid-row-end: 3;
     grid-column-start: 1;
@@ -45,17 +45,6 @@
     height: 100%;
     background: rgba(0,0,0,.5);
     z-index: 1;
-}
-
-#hud{
-    grid-area: hud;
-    background: greenyellow;
-    display: flex;
-    flex-flow: column wrap;
-    place-content: center flex-start;
-    place-items: center flex-start;
-    gap: 20px;
-    padding: 20px;
 }
 
 .boardContainer{
@@ -104,7 +93,37 @@
     z-index: 0;
 }
 
+#hud{
+    grid-area: hud;
+    background: greenyellow;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-areas: 
+    'orientationButtonContainer'
+    'shipsContainer'
+    'selectedShipContainer'
+    ;
+    gap: 20px;
+    padding: 20px;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+#shipsOverlay{
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 1;
+}
+
 #shipsContainer{
+    grid-area: shipsContainer;
     display: flex;
     flex-flow: column wrap;
     place-content: center center;
@@ -117,10 +136,7 @@
     place-content: center center;
     place-items: center center;
     flex-flow: column nowrap;
-    gap: 10px;
-    height: auto;
-    min-width: 240px;
-    min-height: 240px;
+    min-height: 25%;
 }
 
 #destroyer{
@@ -228,6 +244,7 @@
 }
 
 #orientationButtonContainer{
+    grid-area: orientationButtonContainer;
     display: flex;
     flex-flow: column wrap;
     place-content: center center;
@@ -247,6 +264,7 @@ button{
 }
 
 #selectedShipContainer{
+    grid-area: selectedShipContainer;
     display: flex;
     flex-flow: column wrap;
     place-content: center center;

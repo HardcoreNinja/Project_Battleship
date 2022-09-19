@@ -50,7 +50,7 @@ function createMissleBoard() {
 
 function createOverlay() {
   const div = createDiv();
-  div.classList.add('shipBoardOverlay');
+  div.setAttribute('id', 'shipBoardOverlay');
   return div;
 }
 
@@ -59,7 +59,7 @@ function appendToShipBoard() {
 }
 
 function toggleShipBoardOverlay(display) {
-  const overlay = document.querySelector('.shipBoardOverlay');
+  const overlay = document.getElementById('shipBoardOverlay');
   overlay.style.display = display;
 }
 

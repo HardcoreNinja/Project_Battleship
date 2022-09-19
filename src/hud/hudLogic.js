@@ -2,9 +2,14 @@ import { player1 } from '../game/gameLogic';
 import { createDiv } from '../reusables/elements';
 import { toggleShipBoardOverlay } from '../shipBoard/shipBoardContent';
 
-function toggleOrientationButtonDisabled() {
+function toggleOrientationButtonDisabled(disabled) {
   const orientationButton = document.getElementById('orientationButton');
-  orientationButton.disabled = !orientationButton.disabled;
+  orientationButton.disabled = disabled;
+}
+
+function toggleShipsOverlayDisplay(display) {
+  const overlay = document.getElementById('shipsOverlay');
+  overlay.style.display = display;
 }
 
 function clearSelectedShip() {
@@ -13,6 +18,20 @@ function clearSelectedShip() {
   while (selectedShip.firstChild) {
     selectedShip.removeChild(selectedShip.firstChild);
   }
+}
+
+function setNoShipSelected() {
+  const selectedShip = document.getElementById('selectedShip');
+  selectedShip.innerHTML = 'No Ship Selected...';
+}
+
+function deselectShip() {
+  player1.deselectShip();
+  toggleShipsOverlayDisplay('none');
+  clearSelectedShip();
+  setNoShipSelected();
+  toggleShipBoardOverlay('block');
+  toggleOrientationButtonDisabled(true);
 }
 
 function setSelectedShip(activeShip) {
@@ -53,6 +72,7 @@ function setSelectedShip(activeShip) {
     container.append('Carrier');
   }
 
+  container.addEventListener('mousedown', deselectShip);
   container.append(ship);
   selectedShip.append(container);
 }
@@ -71,23 +91,11 @@ function selectShip() {
       player1.selectShip('carrier');
     }
     toggleShipBoardOverlay('none');
-  } else {
-    player1.deselectShip();
-    if (this.getAttribute('id') === 'destroyer') {
-      player1.selectShip('destroyer');
-    } else if (this.getAttribute('id') === 'submarine') {
-      player1.selectShip('submarine');
-    } else if (this.getAttribute('id') === 'cruiser') {
-      player1.selectShip('cruiser');
-    } else if (this.getAttribute('id') === 'battleship') {
-      player1.selectShip('battleship');
-    } else if (this.getAttribute('id') === 'carrier') {
-      player1.selectShip('carrier');
-    }
   }
 
-  toggleOrientationButtonDisabled();
+  toggleOrientationButtonDisabled(false);
   setSelectedShip(player1.activeShip);
+  toggleShipsOverlayDisplay('block');
   console.log(player1.activeShip);
 }
 
@@ -102,5 +110,4 @@ function changeOrientation() {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { selectShip, changeOrientation };
+export { selectShip, changeOrientation, setNoShipSelected };
