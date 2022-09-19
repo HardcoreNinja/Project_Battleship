@@ -6,6 +6,14 @@ function toggleOrientationButtonDisabled() {
   orientationButton.disabled = !orientationButton.disabled;
 }
 
+function clearSelectedShip() {
+  const selectedShip = document.getElementById('selectedShip');
+
+  while (selectedShip.firstChild) {
+    selectedShip.removeChild(selectedShip.firstChild);
+  }
+}
+
 function selectShip() {
   if (player1.activeShip === null) {
     if (this.getAttribute('id') === 'destroyer') {
@@ -36,7 +44,7 @@ function selectShip() {
   }
 
   toggleOrientationButtonDisabled();
-
+  clearSelectedShip();
   console.log(player1.activeShip);
 }
 
