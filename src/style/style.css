@@ -246,6 +246,13 @@ button{
     place-items: center center;
 }
 
+#selectedShipContainer{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
+}
+
 #selectedShip{
     display: flex;
     flex-flow: column wrap;

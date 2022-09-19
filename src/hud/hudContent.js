@@ -68,10 +68,13 @@ const createOrientationButton = () => {
 };
 
 function createSelectedShip() {
+  const selectedShipContainer = createDiv();
+  selectedShipContainer.setAttribute('id', 'selectedShipContainer');
   const selectedShip = createDiv();
   selectedShip.setAttribute('id', 'selectedShip');
   selectedShip.innerHTML = 'No Ship Selected...';
-  return selectedShip;
+  selectedShipContainer.append('Selected Ship', selectedShip);
+  return selectedShipContainer;
 }
 
 function appendToHUD() {
