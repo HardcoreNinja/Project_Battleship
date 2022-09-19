@@ -47,8 +47,14 @@ function createMissleBoard() {
   return container;
 }
 
+function createOverlay() {
+  const div = createDiv();
+  div.classList.add('shipBoardOverlay');
+  return div;
+}
+
 function appendToShipBoard() {
-  getShipBoard().append(createMissleBoard(), createShipBoard());
+  getShipBoard().append(createMissleBoard(), createShipBoard(), createOverlay());
 }
 
 appendToShipBoard();
