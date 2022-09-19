@@ -8,33 +8,33 @@ function addShips(container) {
     const ship = createDiv();
     if (i === 0) {
       ship.setAttribute('id', 'destroyer');
-      const destroyerLength = createDiv();
-      destroyerLength.classList.add('destroyerIcon');
-      ship.append(destroyerLength);
+      const destroyerIcon = createDiv();
+      destroyerIcon.classList.add('destroyerIcon');
+      ship.append(destroyerIcon);
       container.append('Destroyer');
     } else if (i === 1) {
       ship.setAttribute('id', 'submarine');
-      const submarineLength = createDiv();
-      submarineLength.classList.add('submarineIcon');
-      ship.append(submarineLength);
+      const submarineIcon = createDiv();
+      submarineIcon.classList.add('submarineIcon');
+      ship.append(submarineIcon);
       container.append('Submarine');
     } else if (i === 2) {
       ship.setAttribute('id', 'cruiser');
-      const cruiser = createDiv();
-      cruiser.classList.add('cruiserIcon');
-      ship.append(cruiser);
+      const cruiserIcon = createDiv();
+      cruiserIcon.classList.add('cruiserIcon');
+      ship.append(cruiserIcon);
       container.append('Cruiser');
     } else if (i === 3) {
       ship.setAttribute('id', 'battleship');
-      const battleship = createDiv();
-      battleship.classList.add('battleshipIcon');
-      ship.append(battleship);
+      const battleshipIcon = createDiv();
+      battleshipIcon.classList.add('battleshipIcon');
+      ship.append(battleshipIcon);
       container.append('Battleship');
     } else if (i === 4) {
       ship.setAttribute('id', 'carrier');
-      const carrier = createDiv();
-      carrier.classList.add('carrierIcon');
-      ship.append(carrier);
+      const carrierIcon = createDiv();
+      carrierIcon.classList.add('carrierIcon');
+      ship.append(carrierIcon);
       container.append('Carrier');
     }
 

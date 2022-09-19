@@ -1,4 +1,5 @@
 import { player1 } from '../game/gameLogic';
+import { createDiv } from '../reusables/elements';
 import { toggleShipBoardOverlay } from '../shipBoard/shipBoardContent';
 
 function toggleOrientationButtonDisabled() {
@@ -12,6 +13,48 @@ function clearSelectedShip() {
   while (selectedShip.firstChild) {
     selectedShip.removeChild(selectedShip.firstChild);
   }
+}
+
+function setSelectedShip(activeShip) {
+  clearSelectedShip();
+  const selectedShip = document.getElementById('selectedShip');
+  const container = createDiv();
+  container.setAttribute('id', 'shipsContainer');
+  const ship = createDiv();
+  if (activeShip.name === 'destroyer') {
+    ship.setAttribute('id', 'destroyer');
+    const destroyerIcon = createDiv();
+    destroyerIcon.classList.add('destroyerIcon');
+    ship.append(destroyerIcon);
+    container.append('Destroyer');
+  } else if (activeShip.name === 'submarine') {
+    ship.setAttribute('id', 'submarine');
+    const submarineIcon = createDiv();
+    submarineIcon.classList.add('submarineIcon');
+    ship.append(submarineIcon);
+    container.append('Submarine');
+  } else if (activeShip.name === 'cruiser') {
+    ship.setAttribute('id', 'cruiser');
+    const cruiserIcon = createDiv();
+    cruiserIcon.classList.add('cruiserIcon');
+    ship.append(cruiserIcon);
+    container.append('Cruiser');
+  } else if (activeShip.name === 'battleship') {
+    ship.setAttribute('id', 'battleship');
+    const battleshipIcon = createDiv();
+    battleshipIcon.classList.add('battleshipIcon');
+    ship.append(battleshipIcon);
+    container.append('Battleship');
+  } else if (activeShip.name === 'carrier') {
+    ship.setAttribute('id', 'carrier');
+    const carrierIcon = createDiv();
+    carrierIcon.classList.add('carrierIcon');
+    ship.append(carrierIcon);
+    container.append('Carrier');
+  }
+
+  container.append(ship);
+  selectedShip.append(container);
 }
 
 function selectShip() {
@@ -44,7 +87,7 @@ function selectShip() {
   }
 
   toggleOrientationButtonDisabled();
-  clearSelectedShip();
+  setSelectedShip(player1.activeShip);
   console.log(player1.activeShip);
 }
 
