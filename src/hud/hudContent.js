@@ -67,8 +67,14 @@ const createOrientationButton = () => {
   return container;
 };
 
+function createSelectedShip() {
+  const selectedShip = createDiv();
+  selectedShip.setAttribute('id', 'selectedShip');
+  return selectedShip;
+}
+
 function appendToHUD() {
-  getHud().append(createOrientationButton(), createships());
+  getHud().append(createOrientationButton(), createships(), createSelectedShip());
 }
 
 appendToHUD();
