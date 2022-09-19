@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { getShipBoard } from '../reusables/gridItems';
 import { createDiv } from '../reusables/elements';
 
@@ -57,4 +58,10 @@ function appendToShipBoard() {
   getShipBoard().append(createMissleBoard(), createShipBoard(), createOverlay());
 }
 
+function toggleShipBoardOverlay(display) {
+  const overlay = document.querySelector('.shipBoardOverlay');
+  overlay.style.display = display;
+}
+
+export { toggleShipBoardOverlay };
 appendToShipBoard();
