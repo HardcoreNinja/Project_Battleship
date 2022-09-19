@@ -60,7 +60,7 @@ const createOrientationButton = () => {
   const button = createButton();
   button.disabled = 'true';
   button.setAttribute('id', 'orientationButton');
-  button.innerHTML = 'Horizontal';
+  button.innerHTML = 'Vertical';
   button.addEventListener('mousedown', changeOrientation);
 
   container.append('Orientation', button);

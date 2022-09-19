@@ -1,6 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { getShipBoard } from '../reusables/gridItems';
 import { createDiv } from '../reusables/elements';
+import { placeShip } from './shipBoardLogic';
 
 function createShipBoard() {
   const container = createDiv();
@@ -13,9 +14,10 @@ function createShipBoard() {
   for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
       const square = createDiv();
-      square.setAttribute('id', `${x},${y}`);
-      square.innerHTML = `${counter}`;
+      square.setAttribute('id', `${counter}`);
+      // square.innerHTML = `${counter}`;
       square.classList.add('boardSquare');
+      square.addEventListener('mousedown', placeShip);
       board.append(square);
       counter++;
     }

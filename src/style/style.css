@@ -60,6 +60,10 @@
 }
 
 .boardSquare{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
     width: 32px;
     height: 32px;
     background: blue;
@@ -91,6 +95,26 @@
     place-items: center center;
     padding: 5px;
     z-index: 0;
+}
+
+.front{
+    width: 28px;
+    height: 28px;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%;
+    background-color: red;
+}
+
+.middle{
+    width: 28px;
+    height: 28px;
+    border-top-left-radius: 22%;
+    border-bottom-left-radius: 22%;
+    border-top-right-radius: 22%;
+    border-bottom-right-radius: 22%;
+    background-color: red;
 }
 
 #hud{

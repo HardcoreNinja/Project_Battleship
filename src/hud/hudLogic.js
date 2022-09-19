@@ -102,7 +102,6 @@ function selectShip() {
 function changeOrientation() {
   const activeShip = document.getElementById(`selected_${player1.activeShip.name}`);
   if (player1.activeShip !== null) {
-    player1.changeOrientation();
     if (player1.activeShip.horizontalVertical) {
       this.innerHTML = 'Horizontal';
       activeShip.style.transform = 'rotate(.25turn)';
@@ -110,7 +109,10 @@ function changeOrientation() {
       this.innerHTML = 'Vertical';
       activeShip.style.transform = 'rotate(0turn)';
     }
+    player1.changeOrientation();
   }
 }
 
-export { selectShip, changeOrientation, setNoShipSelected };
+export {
+  selectShip, changeOrientation, setNoShipSelected,
+};
