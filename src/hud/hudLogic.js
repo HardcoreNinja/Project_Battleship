@@ -25,8 +25,74 @@ function setNoShipSelected() {
   selectedShip.innerHTML = 'No Ship Selected...';
 }
 
+function changeIconColor(name) {
+  if (name === 'destroyer') {
+    if (player1.destroyerCount <= 0) {
+      const destroyer = document.getElementById('destroyer');
+      destroyer.style.background = 'gray';
+      const destroyerIcon = document.querySelector('.destroyerIcon');
+      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+    } else if (player1.destroyerCount > 0) {
+      const destroyer = document.getElementById('destroyer');
+      destroyer.style.background = 'blue';
+      const destroyerIcon = document.querySelector('.destroyerIcon');
+      destroyerIcon.style.background = 'red';
+    }
+  } else if (name === 'submarine') {
+    if (player1.submarineCount <= 0) {
+      const destroyer = document.getElementById('submarine');
+      destroyer.style.background = 'gray';
+      const destroyerIcon = document.querySelector('.submarineIcon');
+      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+    } else if (player1.submarineCount > 0) {
+      const destroyer = document.getElementById('submarine');
+      destroyer.style.background = 'blue';
+      const destroyerIcon = document.querySelector('.submarineIcon');
+      destroyerIcon.style.background = 'red';
+    }
+  } else if (name === 'cruiser') {
+    if (player1.cruiserCount <= 0) {
+      const destroyer = document.getElementById('cruiser');
+      destroyer.style.background = 'gray';
+      const destroyerIcon = document.querySelector('.cruiserIcon');
+      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+    } else if (player1.cruiserCount > 0) {
+      const destroyer = document.getElementById('cruiser');
+      destroyer.style.background = 'blue';
+      const destroyerIcon = document.querySelector('.cruiserIcon');
+      destroyerIcon.style.background = 'red';
+    }
+  } else if (name === 'battleship') {
+    if (player1.battleshipCount <= 0) {
+      const destroyer = document.getElementById('battleship');
+      destroyer.style.background = 'gray';
+      const destroyerIcon = document.querySelector('.battleshipIcon');
+      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+    } else if (player1.battleshipCount > 0) {
+      const destroyer = document.getElementById('battleship');
+      destroyer.style.background = 'blue';
+      const destroyerIcon = document.querySelector('.battleshipIcon');
+      destroyerIcon.style.background = 'red';
+    }
+  } else if (name === 'carrier') {
+    if (player1.carrierCount <= 0) {
+      const destroyer = document.getElementById('carrier');
+      destroyer.style.background = 'gray';
+      const destroyerIcon = document.querySelector('.carrierIcon');
+      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+    } else if (player1.carrierCount > 0) {
+      const destroyer = document.getElementById('carrier');
+      destroyer.style.background = 'blue';
+      const destroyerIcon = document.querySelector('.carrierIcon');
+      destroyerIcon.style.background = 'red';
+    }
+  }
+}
+
 function deselectShip() {
+  const oldActiveShipName = player1.activeShip.name;
   player1.deselectShip();
+  changeIconColor(oldActiveShipName);
   toggleShipsOverlayDisplay('none');
   clearSelectedShip();
   setNoShipSelected();
@@ -99,6 +165,7 @@ function selectShip() {
       toggleShipBoardOverlay('none');
     }
 
+    changeIconColor(this.getAttribute('id'));
     toggleOrientationButtonDisabled(false);
     setSelectedShip(player1.activeShip);
     toggleShipsOverlayDisplay('block');

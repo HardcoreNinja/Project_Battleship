@@ -1,16 +1,16 @@
-*{
+* {
     padding: 0px;
     margin: 0px;
 }
 
-#content{
+#content {
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 7fr;
     background: orange;
-    grid-template-areas: 
-    'nav nav'
-    'shipBoard hud'
+    grid-template-areas:
+        'nav nav'
+        'shipBoard hud'
     ;
     min-width: 100vw;
     min-height: 100vh;
@@ -18,24 +18,24 @@
     max-height: 100vh;
 }
 
-#nav{
+#nav {
     grid-area: nav;
     background: magenta;
 }
 
-#shipBoard{
+#shipBoard {
     grid-area: shipBoard;
     background: red;
     display: grid;
     grid-template-columns: 1fr;
     grid-row: 1fr 1fr;
-    grid-template-areas: 
-    'missileGridContainer'
-    'shipGridContainer'
+    grid-template-areas:
+        'missileGridContainer'
+        'shipGridContainer'
     ;
 }
 
-#shipBoardOverlay{
+#shipBoardOverlay {
     grid-row-start: 1;
     grid-row-end: 3;
     grid-column-start: 1;
@@ -43,11 +43,11 @@
     display: block;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     z-index: 1;
 }
 
-.boardContainer{
+.boardContainer {
     display: flex;
     background: orange;
     place-content: flex-start flex-start;
@@ -59,7 +59,7 @@
     max-height: 340px;
 }
 
-.boardSquare{
+.boardSquare {
     display: flex;
     flex-flow: column wrap;
     place-content: center center;
@@ -71,13 +71,13 @@
     transition: 0.75s all;
 }
 
-.boardSquare:hover{
+.boardSquare:hover {
     transform: scale(1.1);
     background: magenta;
-    
+
 }
 
-#missileGridContainer{
+#missileGridContainer {
     grid-area: missileGridContainer;
     display: flex;
     flex-flow: column wrap;
@@ -87,7 +87,7 @@
     z-index: 0;
 }
 
-#shipGridContainer{
+#shipGridContainer {
     grid-area: shipGridContainer;
     display: flex;
     flex-flow: column wrap;
@@ -97,7 +97,7 @@
     z-index: 0;
 }
 
-.front{
+.front {
     width: 28px;
     height: 28px;
     border-top-left-radius: 50%;
@@ -107,7 +107,7 @@
     background-color: red;
 }
 
-.middle{
+.middle {
     width: 28px;
     height: 28px;
     border-top-left-radius: 22%;
@@ -117,16 +117,16 @@
     background-color: red;
 }
 
-#hud{
+#hud {
     grid-area: hud;
     background: greenyellow;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 2fr;
-    grid-template-areas: 
-    'orientationButtonContainer'
-    'shipsContainer'
-    'selectedShipContainer'
+    grid-template-areas:
+        'orientationButtonContainer'
+        'shipsContainer'
+        'selectedShipContainer'
     ;
     gap: 20px;
     padding: 20px;
@@ -134,7 +134,7 @@
     max-height: 100vh;
 }
 
-#shipsOverlay{
+#shipsOverlay {
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 1;
@@ -142,11 +142,11 @@
     display: none;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     z-index: 1;
 }
 
-#shipsContainer{
+#shipsContainer {
     grid-area: shipsContainer;
     display: flex;
     flex-flow: column wrap;
@@ -154,7 +154,7 @@
     place-items: center center;
 }
 
-#ships{
+#ships {
     display: flex;
     background: orange;
     place-content: center center;
@@ -164,7 +164,7 @@
 }
 
 #destroyer,
-#selected_destroyer{
+#selected_destroyer {
     display: flex;
     place-content: center flex-start;
     place-items: center flex-start;
@@ -174,7 +174,7 @@
     border: 1px solid transparent;
 }
 
-.destroyerIcon{
+.destroyerIcon {
     width: 30px;
     height: 30px;
     border-top-left-radius: 50%;
@@ -185,7 +185,7 @@
 }
 
 #submarine,
-#selected_submarine{
+#selected_submarine {
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -196,7 +196,7 @@
     border: 1px solid transparent;
 }
 
-.submarineIcon{
+.submarineIcon {
     width: 60px;
     height: 30px;
     border-top-left-radius: 50%;
@@ -207,7 +207,7 @@
 }
 
 #cruiser,
-#selected_cruiser{
+#selected_cruiser {
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -218,7 +218,7 @@
     border: 1px solid transparent;
 }
 
-.cruiserIcon{
+.cruiserIcon {
     width: 94px;
     height: 30px;
     border-top-left-radius: 50%;
@@ -229,7 +229,7 @@
 }
 
 #battleship,
-#selected_battleship{
+#selected_battleship {
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -240,7 +240,7 @@
     border: 1px solid transparent;
 }
 
-.battleshipIcon{
+.battleshipIcon {
     width: 126px;
     height: 30px;
     border-top-left-radius: 50%;
@@ -251,7 +251,7 @@
 }
 
 #carrier,
-#selected_carrier{
+#selected_carrier {
     display: flex;
     place-content: center center;
     place-items: center center;
@@ -262,7 +262,7 @@
     border: 1px solid transparent;
 }
 
-.carrierIcon{
+.carrierIcon {
     width: 158px;
     height: 30px;
     border-top-left-radius: 50%;
@@ -272,27 +272,28 @@
     background-color: red;
 }
 
-#orientationButtonContainer{
+#orientationButtonContainer {
     grid-area: orientationButtonContainer;
     display: flex;
     flex-flow: column wrap;
     place-content: center center;
     place-items: center center;
 }
-#orientationButton{
+
+#orientationButton {
     display: flex;
     width: 160px;
     height: 32px;
 }
 
-button{
+button {
     display: flex;
     flex-flow: column wrap;
     place-content: center center;
     place-items: center center;
 }
 
-#selectedShipContainer{
+#selectedShipContainer {
     grid-area: selectedShipContainer;
     display: flex;
     flex-flow: column wrap;
@@ -300,7 +301,7 @@ button{
     place-items: center center;
 }
 
-#selected_ShipContainer{
+#selected_ShipContainer {
     display: flex;
     flex-flow: column wrap;
     place-content: center center;
@@ -308,7 +309,7 @@ button{
     gap: 70px;
 }
 
-#selectedShip{
+#selectedShip {
     display: flex;
     flex-flow: column wrap;
     place-content: center flex-start;
