@@ -1,6 +1,6 @@
 const Player = require('../test/player');
+const AI = require('../test/ai');
 
 const player1 = new Player();
-
-// eslint-disable-next-line import/prefer-default-export
-export { player1 };
+const ai = new AI();
+export { player1, ai };

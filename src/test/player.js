@@ -12,6 +12,7 @@ class Player {
     this.battleshipCount = this.shipMap.get('battleship').length;
     this.carrierCount = this.shipMap.get('carrier').length;
     this.occupiedCoordinates = [];
+    this.score = 0;
   }
 
   createShipMap() {

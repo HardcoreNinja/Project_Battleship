@@ -1,4 +1,4 @@
-import { player1 } from '../game/gameLogic';
+import { player1, ai } from '../game/gameLogic';
 import { createDiv } from '../reusables/elements';
 
 function toggleShipsOverlayDisplay(display) {
@@ -241,5 +241,23 @@ function placeShip() {
   }
 }
 
-// eslint-disable-next-line import/prefer-default-export
-export { placeShip };
+function checkForWinner() {
+  if (player1.score === 15) { alert('Player Won!'); }
+}
+
+function fire() {
+  const array = this.getAttribute('id').split(' ');
+  const coordinate = [parseInt(array[0], 10), parseInt(array[1], 10)];
+
+  ai.player.receiveFire(coordinate);
+  if (ai.player.gameBoard.getCoordinateFromCoordinate(coordinate).hit
+  && ai.player.gameBoard.getCoordinateFromCoordinate(coordinate).occupied) {
+    this.style.background = 'red';
+    player1.score++;
+    checkForWinner();
+  } else {
+    this.style.background = 'yellow';
+  }
+}
+
+export { placeShip, fire };
