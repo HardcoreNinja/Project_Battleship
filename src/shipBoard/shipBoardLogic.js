@@ -54,7 +54,9 @@ function isValid(id) {
   }
 
   for (let i = 0; i < player1.activeShip.length; i++) {
-    if (player1.gameBoard.getCoordinateFromIndex(`${parseInt(id, 10) + i}`).occupied) { return false; }
+    if (player1.activeShip.horizontalVertical) {
+      if (player1.gameBoard.getCoordinateFromIndex(`${parseInt(id, 10) + i}`).occupied) { return false; }
+    } else if (player1.gameBoard.getCoordinateFromIndex(`${parseInt(id, 10) + (i * 10)}`).occupied) { return false; }
   }
 
   return true;
