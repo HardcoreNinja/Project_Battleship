@@ -9,8 +9,8 @@ class GameBoard {
   // Init Functions
   createGameBoard() {
     const array = [];
-    for (let x = 0; x < 10; x++) {
-      for (let y = 0; y < 10; y++) {
+    for (let y = 0; y < 10; y++) {
+      for (let x = 0; x < 10; x++) {
         const coordinate = new Coordinate([x, y]);
         array.push(coordinate);
       }
