@@ -169,7 +169,7 @@ function selectShip() {
     toggleOrientationButtonDisabled(false);
     setSelectedShip(player1.activeShip);
     toggleShipsOverlayDisplay('block');
-    console.log(player1.activeShip);
+    // console.log(player1.activeShip);
   }
 }
 
