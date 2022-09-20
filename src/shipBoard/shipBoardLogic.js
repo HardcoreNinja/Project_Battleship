@@ -77,131 +77,134 @@ function checkIfPlayerOutofShips() {
   return false;
 }
 
+function drawShipToShipBoard(activeShip, array, shipSquare) {
+  if (activeShip.name === 'destroyer') {
+    const front = createDiv();
+    front.classList.add('front');
+    if (!activeShip.horizontalVertical) { front.style.transform = 'rotate(.25turn)'; }
+    shipSquare.append(front);
+  } else if (activeShip.name === 'submarine') {
+    const front = createDiv();
+    front.classList.add('front');
+    const mid = createDiv();
+    mid.classList.add('mid');
+
+    if (!activeShip.horizontalVertical) {
+      front.style.transform = 'rotate(.25turn)';
+      mid.style.transform = 'rotate(.25turn)';
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+      square1.append(mid);
+    } else {
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+      square1.append(mid);
+    }
+  } else if (activeShip.name === 'cruiser') {
+    const front = createDiv();
+    front.classList.add('front');
+    const mid1 = createDiv();
+    mid1.classList.add('mid');
+    const mid2 = createDiv();
+    mid2.classList.add('mid');
+
+    if (!activeShip.horizontalVertical) {
+      front.style.transform = 'rotate(.25turn)';
+      mid1.style.transform = 'rotate(.25turn)';
+      mid2.style.transform = 'rotate(.25turn)';
+
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+      square1.append(mid1);
+      const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
+      square2.append(mid2);
+    } else if (activeShip.horizontalVertical) {
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+      square1.append(mid1);
+      const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
+      square2.append(mid2);
+    }
+  } else if (activeShip.name === 'battleship') {
+    const front = createDiv();
+    front.classList.add('front');
+    const mid1 = createDiv();
+    mid1.classList.add('mid');
+    const mid2 = createDiv();
+    mid2.classList.add('mid');
+    const mid3 = createDiv();
+    mid3.classList.add('mid');
+
+    if (!activeShip.horizontalVertical) {
+      front.style.transform = 'rotate(.25turn)';
+      mid1.style.transform = 'rotate(.25turn)';
+      mid2.style.transform = 'rotate(.25turn)';
+      mid3.style.transform = 'rotate(.25turn)';
+
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+      square1.append(mid1);
+      const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
+      square2.append(mid2);
+      const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
+      square3.append(mid3);
+    } else if (activeShip.horizontalVertical) {
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+      square1.append(mid1);
+      const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
+      square2.append(mid2);
+      const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
+      square3.append(mid3);
+    }
+  } else if (activeShip.name === 'carrier') {
+    const front = createDiv();
+    front.classList.add('front');
+    const mid1 = createDiv();
+    mid1.classList.add('mid');
+    const mid2 = createDiv();
+    mid2.classList.add('mid');
+    const mid3 = createDiv();
+    mid3.classList.add('mid');
+    const mid4 = createDiv();
+    mid4.classList.add('mid');
+
+    if (!activeShip.horizontalVertical) {
+      front.style.transform = 'rotate(.25turn)';
+      mid1.style.transform = 'rotate(.25turn)';
+      mid2.style.transform = 'rotate(.25turn)';
+      mid3.style.transform = 'rotate(.25turn)';
+      mid4.style.transform = 'rotate(.25turn)';
+
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+      square1.append(mid1);
+      const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
+      square2.append(mid2);
+      const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
+      square3.append(mid3);
+      const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 40}`);
+      square4.append(mid4);
+    } else if (activeShip.horizontalVertical) {
+      shipSquare.append(front);
+      const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+      square1.append(mid1);
+      const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
+      square2.append(mid2);
+      const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
+      square3.append(mid3);
+      const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 4}`);
+      square4.append(mid4);
+    }
+  }
+}
+
 function placeShip() {
   const array = this.getAttribute('id').split('S_');
   if (isValid(array[1])) {
     const oldActiveShip = player1.activeShip;
     player1.placeShip(player1.gameBoard.getCoordinateFromIndex(array[1]).coordinate);
-    if (oldActiveShip.name === 'destroyer') {
-      const front = createDiv();
-      front.classList.add('front');
-      if (!oldActiveShip.horizontalVertical) { front.style.transform = 'rotate(.25turn)'; }
-      this.append(front);
-    } else if (oldActiveShip.name === 'submarine') {
-      const front = createDiv();
-      front.classList.add('front');
-      const mid = createDiv();
-      mid.classList.add('mid');
-
-      if (!oldActiveShip.horizontalVertical) {
-        front.style.transform = 'rotate(.25turn)';
-        mid.style.transform = 'rotate(.25turn)';
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        square1.append(mid);
-      } else {
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        square1.append(mid);
-      }
-    } else if (oldActiveShip.name === 'cruiser') {
-      const front = createDiv();
-      front.classList.add('front');
-      const mid1 = createDiv();
-      mid1.classList.add('mid');
-      const mid2 = createDiv();
-      mid2.classList.add('mid');
-
-      if (!oldActiveShip.horizontalVertical) {
-        front.style.transform = 'rotate(.25turn)';
-        mid1.style.transform = 'rotate(.25turn)';
-        mid2.style.transform = 'rotate(.25turn)';
-
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        square1.append(mid1);
-        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
-        square2.append(mid2);
-      } else if (oldActiveShip.horizontalVertical) {
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        square1.append(mid1);
-        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
-        square2.append(mid2);
-      }
-    } else if (oldActiveShip.name === 'battleship') {
-      const front = createDiv();
-      front.classList.add('front');
-      const mid1 = createDiv();
-      mid1.classList.add('mid');
-      const mid2 = createDiv();
-      mid2.classList.add('mid');
-      const mid3 = createDiv();
-      mid3.classList.add('mid');
-
-      if (!oldActiveShip.horizontalVertical) {
-        front.style.transform = 'rotate(.25turn)';
-        mid1.style.transform = 'rotate(.25turn)';
-        mid2.style.transform = 'rotate(.25turn)';
-        mid3.style.transform = 'rotate(.25turn)';
-
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        square1.append(mid1);
-        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
-        square2.append(mid2);
-        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
-        square3.append(mid3);
-      } else if (oldActiveShip.horizontalVertical) {
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        square1.append(mid1);
-        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
-        square2.append(mid2);
-        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
-        square3.append(mid3);
-      }
-    } else if (oldActiveShip.name === 'carrier') {
-      const front = createDiv();
-      front.classList.add('front');
-      const mid1 = createDiv();
-      mid1.classList.add('mid');
-      const mid2 = createDiv();
-      mid2.classList.add('mid');
-      const mid3 = createDiv();
-      mid3.classList.add('mid');
-      const mid4 = createDiv();
-      mid4.classList.add('mid');
-
-      if (!oldActiveShip.horizontalVertical) {
-        front.style.transform = 'rotate(.25turn)';
-        mid1.style.transform = 'rotate(.25turn)';
-        mid2.style.transform = 'rotate(.25turn)';
-        mid3.style.transform = 'rotate(.25turn)';
-        mid4.style.transform = 'rotate(.25turn)';
-
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        square1.append(mid1);
-        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
-        square2.append(mid2);
-        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
-        square3.append(mid3);
-        const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 40}`);
-        square4.append(mid4);
-      } else if (oldActiveShip.horizontalVertical) {
-        this.append(front);
-        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        square1.append(mid1);
-        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
-        square2.append(mid2);
-        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
-        square3.append(mid3);
-        const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 4}`);
-        square4.append(mid4);
-      }
-    }
-
+    drawShipToShipBoard(oldActiveShip, array, this);
     if (!checkIfPlayerOutofShips()) {
       clearSelectedShip();
       setNoShipSelected();
