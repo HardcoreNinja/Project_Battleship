@@ -63,13 +63,43 @@ class Player {
   }
 
   isCoordinateValid(coordinate) {
+    const index = this.gameBoard.getIndexOfCoordinate(coordinate);
+
     if (this.activeShip !== null
       && this.gameBoard.getCoordinateFromCoordinate(coordinate).occupied === false
       && coordinate[0] >= 0
       && coordinate[0] <= 9
       && coordinate[1] >= 0
-      && coordinate[1] <= 9) { return true; }
-    return false;
+      && coordinate[1] <= 9) {
+      if (this.activeShip.horizontalVertical) {
+        if ((parseInt(index, 10) % 10 > 9 && this.activeShip.name === 'destroyer')
+          || (parseInt(index, 10) % 10 > 8 && this.activeShip.name === 'submarine')
+          || (parseInt(index, 10) % 10 > 7 && this.activeShip.name === 'cruiser')
+          || (parseInt(index, 10) % 10 > 6 && this.activeShip.name === 'battleship')
+          || (parseInt(index, 10) % 10 > 5 && this.activeShip.name === 'carrier')) {
+          return false;
+        }
+      } else if (!this.activeShip.horizontalVertical) {
+        if ((coordinate[1] > 9 && this.activeShip.name === 'destroyer')
+          || (coordinate[1] > 8 && this.activeShip.name === 'submarine')
+          || (coordinate[1] > 7 && this.activeShip.name === 'cruiser')
+          || (coordinate[1] > 6 && this.activeShip.name === 'battleship')
+          || (coordinate[1] > 5 && this.activeShip.name === 'carrier')
+        ) {
+          return false;
+        }
+      }
+
+      for (let i = 0; i < this.activeShip.length; i++) {
+        if (this.activeShip.horizontalVertical) {
+          if (this.gameBoard.getCoordinateFromIndex(`${parseInt(index, 10) + i}`).occupied) { return false; }
+        } else if (!this.activeShip.horizontalVertical) {
+          if (this.gameBoard.getCoordinateFromIndex(`${parseInt(index, 10) + (i * 10)}`).occupied) { return false; }
+        }
+      }
+    } else return false;
+
+    return true;
   }
 
   updateOccupiedCoordinates(coordinateArray) {
