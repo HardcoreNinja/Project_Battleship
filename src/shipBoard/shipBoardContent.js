@@ -14,7 +14,7 @@ function createShipBoard() {
   for (let x = 0; x < 10; x++) {
     for (let y = 0; y < 10; y++) {
       const square = createDiv();
-      square.setAttribute('id', `${counter}`);
+      square.setAttribute('id', `S_${counter}`);
       // square.innerHTML = `${counter}`;
       square.classList.add('boardSquare');
       square.addEventListener('mousedown', placeShip);
@@ -33,15 +33,16 @@ function createMissleBoard() {
   const board = createDiv();
   board.setAttribute('id', 'missleGrid');
   board.classList.add('boardContainer');
-
+  let counter = 0;
   for (let y = 0; y < 10; y++) {
     for (let x = 0; x < 10; x++) {
       const square = createDiv();
-      square.setAttribute('id', `${x} ${y}`);
+      square.setAttribute('id', `M_${counter}`);
       // square.innerHTML = `${counter}`;
       square.classList.add('boardSquare');
       square.addEventListener('mousedown', fire);
       board.append(square);
+      counter++;
     }
   }
 

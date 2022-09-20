@@ -78,8 +78,9 @@ function checkIfPlayerOutofShips() {
 }
 
 function placeShip() {
-  if (isValid(this.getAttribute('id'))) {
-    player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10)}`).occupied = true;
+  const array = this.getAttribute('id').split('S_');
+  if (isValid(array[1])) {
+    player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10)}`).occupied = true;
     if (player1.activeShip.name === 'destroyer') {
       const front = createDiv();
       front.classList.add('front');
@@ -96,13 +97,13 @@ function placeShip() {
         mid.style.transform = 'rotate(.25turn)';
 
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid);
       } else {
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid);
       }
     } else if (player1.activeShip.name === 'cruiser') {
@@ -119,20 +120,20 @@ function placeShip() {
         mid2.style.transform = 'rotate(.25turn)';
 
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid1);
-        const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 20}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 20}`).occupied = true;
+        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 20}`).occupied = true;
         square2.append(mid2);
       } else if (player1.activeShip.horizontalVertical) {
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid1);
 
-        const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 2}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 2}`).occupied = true;
+        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 2}`).occupied = true;
         square2.append(mid2);
       }
     } else if (player1.activeShip.name === 'battleship') {
@@ -152,25 +153,25 @@ function placeShip() {
         mid3.style.transform = 'rotate(.25turn)';
 
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid1);
-        const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 20}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 20}`).occupied = true;
+        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 20}`).occupied = true;
         square2.append(mid2);
-        const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 30}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 30}`).occupied = true;
+        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 30}`).occupied = true;
         square3.append(mid3);
       } else if (player1.activeShip.horizontalVertical) {
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid1);
-        const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 2}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 2}`).occupied = true;
+        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 2}`).occupied = true;
         square2.append(mid2);
-        const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 3}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 3}`).occupied = true;
+        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 3}`).occupied = true;
         square3.append(mid3);
       }
     } else if (player1.activeShip.name === 'carrier') {
@@ -193,31 +194,31 @@ function placeShip() {
         mid4.style.transform = 'rotate(.25turn)';
 
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid1);
-        const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 20}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 20}`).occupied = true;
+        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 20}`).occupied = true;
         square2.append(mid2);
-        const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 30}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 30}`).occupied = true;
+        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 30}`).occupied = true;
         square3.append(mid3);
-        const square4 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 40}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 40}`).occupied = true;
+        const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 40}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 40}`).occupied = true;
         square4.append(mid4);
       } else if (player1.activeShip.horizontalVertical) {
         this.append(front);
-        const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
+        const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid1);
-        const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 2}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 2}`).occupied = true;
+        const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 2}`).occupied = true;
         square2.append(mid2);
-        const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 3}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 3}`).occupied = true;
+        const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 3}`).occupied = true;
         square3.append(mid3);
-        const square4 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 4}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 4}`).occupied = true;
+        const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 4}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 4}`).occupied = true;
         square4.append(mid4);
       }
     }
@@ -246,18 +247,20 @@ function checkForWinner() {
 }
 
 function fire() {
-  const array = this.getAttribute('id').split(' ');
-  const coordinate = [parseInt(array[0], 10), parseInt(array[1], 10)];
+  const array = this.getAttribute('id').split('M_');
+  const index = parseInt(array[1], 10);
 
-  ai.player.receiveFire(coordinate);
-  if (ai.player.gameBoard.getCoordinateFromCoordinate(coordinate).hit
-  && ai.player.gameBoard.getCoordinateFromCoordinate(coordinate).occupied) {
+  ai.player.receiveFire(ai.player.gameBoard.getCoordinateFromIndex(index).coordinate);
+  if (ai.player.gameBoard.getCoordinateFromIndex(index).hit
+  && ai.player.gameBoard.getCoordinateFromIndex(index).occupied) {
     this.style.background = 'red';
     player1.score++;
     checkForWinner();
   } else {
     this.style.background = 'yellow';
   }
+
+  ai.fire(player1);
 }
 
 export { placeShip, fire };

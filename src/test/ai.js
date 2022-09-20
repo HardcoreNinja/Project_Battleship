@@ -1,11 +1,20 @@
 #!/usr/bin/env node
 
 const Player = require('./player');
+const GameBoard = require('./gameBoard');
+
+const LastOccupied = {
+  coordinate: null,
+  name: '',
+};
 
 class AI {
   constructor() {
     this.player = new Player();
+    this.missleBoared = new GameBoard();
+    this.visitedMap = new Map();
     this.placeShips();
+    this.lastOccupied = Object(LastOccupied);
   }
 
   selectShip(name) {
@@ -48,6 +57,23 @@ class AI {
         default:
       }
       this.findValidCoordinateAndPlaceShip();
+    }
+  }
+
+  fire(player = new Player()) {
+    let index = Math.floor(Math.random() * 100);
+    while (this.visitedMap.has(`${index}`)) {
+      index = Math.floor(Math.random() * 100);
+    }
+
+    const shipBoardSquare = document.querySelector(`#S_${index}`);
+    this.visitedMap.set(`${index}`, true);
+    if (player.gameBoard.getCoordinateFromIndex(index).occupied) {
+      this.lastOccupied.name = player.gameBoard.getCoordinateFromIndex(index).shipName;
+      this.lastOccupied.coordinate = player.gameBoard.getCoordinateFromIndex(index).coordinate;
+      shipBoardSquare.style.background = 'red';
+    } else {
+      shipBoardSquare.style.background = 'green';
     }
   }
 }
