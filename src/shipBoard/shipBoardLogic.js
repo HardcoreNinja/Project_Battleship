@@ -91,7 +91,7 @@ function placeShip() {
       const front = createDiv();
       front.classList.add('front');
       const mid = createDiv();
-      mid.classList.add('middle');
+      mid.classList.add('mid');
 
       if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
@@ -108,9 +108,9 @@ function placeShip() {
       const front = createDiv();
       front.classList.add('front');
       const mid1 = createDiv();
-      mid1.classList.add('middle');
+      mid1.classList.add('mid');
       const mid2 = createDiv();
-      mid2.classList.add('middle');
+      mid2.classList.add('mid');
 
       if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
@@ -133,11 +133,11 @@ function placeShip() {
       const front = createDiv();
       front.classList.add('front');
       const mid1 = createDiv();
-      mid1.classList.add('middle');
+      mid1.classList.add('mid');
       const mid2 = createDiv();
-      mid2.classList.add('middle');
+      mid2.classList.add('mid');
       const mid3 = createDiv();
-      mid3.classList.add('middle');
+      mid3.classList.add('mid');
 
       if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
@@ -165,13 +165,13 @@ function placeShip() {
       const front = createDiv();
       front.classList.add('front');
       const mid1 = createDiv();
-      mid1.classList.add('middle');
+      mid1.classList.add('mid');
       const mid2 = createDiv();
-      mid2.classList.add('middle');
+      mid2.classList.add('mid');
       const mid3 = createDiv();
-      mid3.classList.add('middle');
+      mid3.classList.add('mid');
       const mid4 = createDiv();
-      mid4.classList.add('middle');
+      mid4.classList.add('mid');
 
       if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
