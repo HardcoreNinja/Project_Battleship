@@ -80,33 +80,31 @@ function checkIfPlayerOutofShips() {
 function placeShip() {
   const array = this.getAttribute('id').split('S_');
   if (isValid(array[1])) {
-    player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10)}`).occupied = true;
-    if (player1.activeShip.name === 'destroyer') {
+    const oldActiveShip = player1.activeShip;
+    player1.placeShip(player1.gameBoard.getCoordinateFromIndex(array[1]).coordinate);
+    if (oldActiveShip.name === 'destroyer') {
       const front = createDiv();
       front.classList.add('front');
-      if (!player1.activeShip.horizontalVertical) { front.style.transform = 'rotate(.25turn)'; }
+      if (!oldActiveShip.horizontalVertical) { front.style.transform = 'rotate(.25turn)'; }
       this.append(front);
-    } else if (player1.activeShip.name === 'submarine') {
+    } else if (oldActiveShip.name === 'submarine') {
       const front = createDiv();
       front.classList.add('front');
       const mid = createDiv();
       mid.classList.add('middle');
 
-      if (!player1.activeShip.horizontalVertical) {
+      if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
         mid.style.transform = 'rotate(.25turn)';
-
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid);
       } else {
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid);
       }
-    } else if (player1.activeShip.name === 'cruiser') {
+    } else if (oldActiveShip.name === 'cruiser') {
       const front = createDiv();
       front.classList.add('front');
       const mid1 = createDiv();
@@ -114,29 +112,24 @@ function placeShip() {
       const mid2 = createDiv();
       mid2.classList.add('middle');
 
-      if (!player1.activeShip.horizontalVertical) {
+      if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
         mid1.style.transform = 'rotate(.25turn)';
         mid2.style.transform = 'rotate(.25turn)';
 
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 20}`).occupied = true;
         square2.append(mid2);
-      } else if (player1.activeShip.horizontalVertical) {
+      } else if (oldActiveShip.horizontalVertical) {
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid1);
-
         const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 2}`).occupied = true;
         square2.append(mid2);
       }
-    } else if (player1.activeShip.name === 'battleship') {
+    } else if (oldActiveShip.name === 'battleship') {
       const front = createDiv();
       front.classList.add('front');
       const mid1 = createDiv();
@@ -146,7 +139,7 @@ function placeShip() {
       const mid3 = createDiv();
       mid3.classList.add('middle');
 
-      if (!player1.activeShip.horizontalVertical) {
+      if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
         mid1.style.transform = 'rotate(.25turn)';
         mid2.style.transform = 'rotate(.25turn)';
@@ -154,27 +147,21 @@ function placeShip() {
 
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 20}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 30}`).occupied = true;
         square3.append(mid3);
-      } else if (player1.activeShip.horizontalVertical) {
+      } else if (oldActiveShip.horizontalVertical) {
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 2}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 3}`).occupied = true;
         square3.append(mid3);
       }
-    } else if (player1.activeShip.name === 'carrier') {
+    } else if (oldActiveShip.name === 'carrier') {
       const front = createDiv();
       front.classList.add('front');
       const mid1 = createDiv();
@@ -186,7 +173,7 @@ function placeShip() {
       const mid4 = createDiv();
       mid4.classList.add('middle');
 
-      if (!player1.activeShip.horizontalVertical) {
+      if (!oldActiveShip.horizontalVertical) {
         front.style.transform = 'rotate(.25turn)';
         mid1.style.transform = 'rotate(.25turn)';
         mid2.style.transform = 'rotate(.25turn)';
@@ -195,36 +182,27 @@ function placeShip() {
 
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 10}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 10}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 20}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 20}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 30}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 30}`).occupied = true;
         square3.append(mid3);
         const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 40}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 40}`).occupied = true;
         square4.append(mid4);
-      } else if (player1.activeShip.horizontalVertical) {
+      } else if (oldActiveShip.horizontalVertical) {
         this.append(front);
         const square1 = document.getElementById(`S_${parseInt(array[1], 10) + 1}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 1}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`S_${parseInt(array[1], 10) + 2}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 2}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`S_${parseInt(array[1], 10) + 3}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 3}`).occupied = true;
         square3.append(mid3);
         const square4 = document.getElementById(`S_${parseInt(array[1], 10) + 4}`);
-        player1.gameBoard.getCoordinateFromIndex(`${parseInt(array[1], 10) + 4}`).occupied = true;
         square4.append(mid4);
       }
     }
 
     if (!checkIfPlayerOutofShips()) {
-      player1.activeShip = null;
       clearSelectedShip();
       setNoShipSelected();
       toggleShipsOverlayDisplay('none');
