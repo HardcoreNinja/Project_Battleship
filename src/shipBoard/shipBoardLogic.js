@@ -62,6 +62,21 @@ function isValid(id) {
   return true;
 }
 
+function toggleHudOverlayDisplay(display) {
+  const overlay = document.getElementById('hudOverlay');
+  overlay.style.display = display;
+}
+
+function checkIfPlayerOutofShips() {
+  if (player1.destroyerCount <= 0
+    && player1.submarineCount <= 0
+    && player1.cruiserCount <= 0
+    && player1.battleshipCount <= 0
+    && player1.carrierCount <= 0) { return true; }
+
+  return false;
+}
+
 function placeShip() {
   if (isValid(this.getAttribute('id'))) {
     player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10)}`).occupied = true;
@@ -207,13 +222,20 @@ function placeShip() {
       }
     }
 
-    player1.activeShip = null;
-    clearSelectedShip();
-    setNoShipSelected();
-    toggleShipsOverlayDisplay('none');
-    toggleShipBoardOverlay('block');
-    defaultOrientationButtonCopy();
-    toggleOrientationButtonDisabled(true);
+    if (!checkIfPlayerOutofShips()) {
+      player1.activeShip = null;
+      clearSelectedShip();
+      setNoShipSelected();
+      toggleShipsOverlayDisplay('none');
+      toggleShipBoardOverlay('block');
+      defaultOrientationButtonCopy();
+      toggleOrientationButtonDisabled(true);
+    } else {
+      clearSelectedShip();
+      setNoShipSelected();
+      toggleHudOverlayDisplay('block');
+      toggleShipsOverlayDisplay('none');
+    }
   }
 }
 

@@ -77,14 +77,26 @@ function createSelectedShip() {
   return selectedShipContainer;
 }
 
-function createOverlay() {
+function createShipsOverlay() {
   const div = createDiv();
   div.setAttribute('id', 'shipsOverlay');
   return div;
 }
 
+function createHudOverlay() {
+  const div = createDiv();
+  div.setAttribute('id', 'hudOverlay');
+  return div;
+}
+
 function appendToHUD() {
-  getHud().append(createOrientationButton(), createships(), createOverlay(), createSelectedShip());
+  getHud().append(
+    createOrientationButton(),
+    createships(),
+    createShipsOverlay(),
+    createSelectedShip(),
+    createHudOverlay(),
+  );
 }
 
 appendToHUD();
