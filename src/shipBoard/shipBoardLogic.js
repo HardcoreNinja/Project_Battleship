@@ -6,6 +6,11 @@ function toggleShipsOverlayDisplay(display) {
   overlay.style.display = display;
 }
 
+function toggleShipBoardOverlay(display) {
+  const overlay = document.getElementById('shipBoardOverlay');
+  overlay.style.display = display;
+}
+
 function clearSelectedShip() {
   const selectedShip = document.getElementById('selectedShip');
 
@@ -25,7 +30,8 @@ function defaultOrientationButtonCopy() {
 
 function placeShip() {
   let canPlace = true;
-  console.log(player1.gameBoard.getCoordinateFromIndex(this.getAttribute('id')).coordinate[1]);
+
+  console.log(player1.gameBoard.getCoordinateFromIndex(`${this.getAttribute('id')}`).occupied);
   if (player1.activeShip.horizontalVertical) {
     if ((parseInt(this.getAttribute('id'), 10) % 10 > 9 && player1.activeShip.name === 'destroyer')
       || (parseInt(this.getAttribute('id'), 10) % 10 > 8 && player1.activeShip.name === 'submarine')
@@ -45,7 +51,12 @@ function placeShip() {
     }
   }
 
+  for (let i = 0; i < player1.activeShip.length; i++) {
+    if (player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + i}`).occupied) { canPlace = false; }
+  }
+
   if (canPlace) {
+    player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10)}`).occupied = true;
     if (player1.activeShip.name === 'destroyer') {
       const front = createDiv();
       front.classList.add('front');
@@ -63,10 +74,12 @@ function placeShip() {
 
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
         square1.append(mid);
       } else {
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
         square1.append(mid);
       }
     } else if (player1.activeShip.name === 'cruiser') {
@@ -84,15 +97,19 @@ function placeShip() {
 
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 20}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 20}`).occupied = true;
         square2.append(mid2);
       } else if (player1.activeShip.horizontalVertical) {
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
         square1.append(mid1);
 
         const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 2}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 2}`).occupied = true;
         square2.append(mid2);
       }
     } else if (player1.activeShip.name === 'battleship') {
@@ -113,18 +130,24 @@ function placeShip() {
 
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 20}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 20}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 30}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 30}`).occupied = true;
         square3.append(mid3);
       } else if (player1.activeShip.horizontalVertical) {
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 2}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 2}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 3}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 3}`).occupied = true;
         square3.append(mid3);
       }
     } else if (player1.activeShip.name === 'carrier') {
@@ -148,22 +171,30 @@ function placeShip() {
 
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 10}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 10}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 20}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 20}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 30}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 30}`).occupied = true;
         square3.append(mid3);
         const square4 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 40}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 40}`).occupied = true;
         square4.append(mid4);
       } else if (player1.activeShip.horizontalVertical) {
         this.append(front);
         const square1 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 1}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 1}`).occupied = true;
         square1.append(mid1);
         const square2 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 2}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 2}`).occupied = true;
         square2.append(mid2);
         const square3 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 3}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 3}`).occupied = true;
         square3.append(mid3);
         const square4 = document.getElementById(`${parseInt(this.getAttribute('id'), 10) + 4}`);
+        player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + 4}`).occupied = true;
         square4.append(mid4);
       }
     }
@@ -172,6 +203,7 @@ function placeShip() {
     clearSelectedShip();
     setNoShipSelected();
     toggleShipsOverlayDisplay('none');
+    toggleShipBoardOverlay('block');
     defaultOrientationButtonCopy();
   }
 }
