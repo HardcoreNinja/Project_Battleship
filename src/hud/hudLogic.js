@@ -78,25 +78,32 @@ function setSelectedShip(activeShip) {
 }
 
 function selectShip() {
-  if (player1.activeShip === null) {
-    if (this.getAttribute('id') === 'destroyer') {
-      player1.selectShip('destroyer');
-    } else if (this.getAttribute('id') === 'submarine') {
-      player1.selectShip('submarine');
-    } else if (this.getAttribute('id') === 'cruiser') {
-      player1.selectShip('cruiser');
-    } else if (this.getAttribute('id') === 'battleship') {
-      player1.selectShip('battleship');
-    } else if (this.getAttribute('id') === 'carrier') {
-      player1.selectShip('carrier');
+  if ((this.getAttribute('id') === 'destroyer' && player1.destroyerCount > 0)
+    || (this.getAttribute('id') === 'submarine' && player1.submarineCount > 0)
+    || (this.getAttribute('id') === 'cruiser' && player1.cruiserCount > 0)
+    || (this.getAttribute('id') === 'battleship' && player1.battleshipCount > 0)
+    || (this.getAttribute('id') === 'carrier' && player1.carrierCount > 0)
+  ) {
+    if (player1.activeShip === null) {
+      if (this.getAttribute('id') === 'destroyer') {
+        player1.selectShip('destroyer');
+      } else if (this.getAttribute('id') === 'submarine') {
+        player1.selectShip('submarine');
+      } else if (this.getAttribute('id') === 'cruiser') {
+        player1.selectShip('cruiser');
+      } else if (this.getAttribute('id') === 'battleship') {
+        player1.selectShip('battleship');
+      } else if (this.getAttribute('id') === 'carrier') {
+        player1.selectShip('carrier');
+      }
+      toggleShipBoardOverlay('none');
     }
-    toggleShipBoardOverlay('none');
-  }
 
-  toggleOrientationButtonDisabled(false);
-  setSelectedShip(player1.activeShip);
-  toggleShipsOverlayDisplay('block');
-  console.log(player1.activeShip);
+    toggleOrientationButtonDisabled(false);
+    setSelectedShip(player1.activeShip);
+    toggleShipsOverlayDisplay('block');
+    console.log(player1.activeShip);
+  }
 }
 
 function changeOrientation() {

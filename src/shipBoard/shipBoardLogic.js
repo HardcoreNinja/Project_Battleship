@@ -49,7 +49,7 @@ function isValid(id) {
       || (player1.gameBoard.getCoordinateFromIndex(id).coordinate[1] > 6 && player1.activeShip.name === 'battleship')
       || (player1.gameBoard.getCoordinateFromIndex(id).coordinate[1] > 5 && player1.activeShip.name === 'carrier')
     ) {
-      canPlace = false;
+      return false;
     }
   }
 
