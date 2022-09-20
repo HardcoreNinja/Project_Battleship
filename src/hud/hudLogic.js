@@ -96,7 +96,7 @@ function deselectShip() {
   toggleShipsOverlayDisplay('none');
   clearSelectedShip();
   setNoShipSelected();
-  toggleShipBoardOverlay('block');
+  toggleShipBoardOverlay('3');
   toggleOrientationButtonDisabled(true);
 }
 
@@ -162,7 +162,7 @@ function selectShip() {
       } else if (this.getAttribute('id') === 'carrier') {
         player1.selectShip('carrier');
       }
-      toggleShipBoardOverlay('none');
+      toggleShipBoardOverlay('2');
     }
 
     changeIconColor(this.getAttribute('id'));

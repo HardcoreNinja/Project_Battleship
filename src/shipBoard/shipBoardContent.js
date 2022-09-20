@@ -60,9 +60,9 @@ function appendToShipBoard() {
   getShipBoard().append(createMissleBoard(), createShipBoard(), createOverlay());
 }
 
-function toggleShipBoardOverlay(display) {
+function toggleShipBoardOverlay(row) {
   const overlay = document.getElementById('shipBoardOverlay');
-  overlay.style.display = display;
+  overlay.style.gridRowEnd = row;
 }
 
 export { toggleShipBoardOverlay };

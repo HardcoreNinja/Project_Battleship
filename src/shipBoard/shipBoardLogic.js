@@ -6,9 +6,9 @@ function toggleShipsOverlayDisplay(display) {
   overlay.style.display = display;
 }
 
-function toggleShipBoardOverlay(display) {
+function toggleShipBoardOverlay(row) {
   const overlay = document.getElementById('shipBoardOverlay');
-  overlay.style.display = display;
+  overlay.style.gridRowEnd = row;
 }
 
 function toggleOrientationButtonDisabled(disabled) {
@@ -227,7 +227,7 @@ function placeShip() {
       clearSelectedShip();
       setNoShipSelected();
       toggleShipsOverlayDisplay('none');
-      toggleShipBoardOverlay('block');
+      toggleShipBoardOverlay('3');
       defaultOrientationButtonCopy();
       toggleOrientationButtonDisabled(true);
     } else {
@@ -235,6 +235,8 @@ function placeShip() {
       setNoShipSelected();
       toggleHudOverlayDisplay('block');
       toggleShipsOverlayDisplay('none');
+      const overlay = document.getElementById('shipBoardOverlay');
+      overlay.remove();
     }
   }
 }
