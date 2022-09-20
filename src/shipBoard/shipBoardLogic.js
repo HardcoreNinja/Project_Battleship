@@ -11,6 +11,11 @@ function toggleShipBoardOverlay(display) {
   overlay.style.display = display;
 }
 
+function toggleOrientationButtonDisabled(disabled) {
+  const orientationButton = document.getElementById('orientationButton');
+  orientationButton.disabled = disabled;
+}
+
 function clearSelectedShip() {
   const selectedShip = document.getElementById('selectedShip');
 
@@ -28,34 +33,35 @@ function defaultOrientationButtonCopy() {
   orientationButton.innerHTML = 'Vertical';
 }
 
-function placeShip() {
-  let canPlace = true;
-
-  console.log(player1.gameBoard.getCoordinateFromIndex(`${this.getAttribute('id')}`).occupied);
+function isValid(id) {
   if (player1.activeShip.horizontalVertical) {
-    if ((parseInt(this.getAttribute('id'), 10) % 10 > 9 && player1.activeShip.name === 'destroyer')
-      || (parseInt(this.getAttribute('id'), 10) % 10 > 8 && player1.activeShip.name === 'submarine')
-      || (parseInt(this.getAttribute('id'), 10) % 10 > 7 && player1.activeShip.name === 'cruiser')
-      || (parseInt(this.getAttribute('id'), 10) % 10 > 6 && player1.activeShip.name === 'battleship')
-      || (parseInt(this.getAttribute('id'), 10) % 10 > 5 && player1.activeShip.name === 'carrier')) {
-      canPlace = false;
+    if ((parseInt(id, 10) % 10 > 9 && player1.activeShip.name === 'destroyer')
+      || (parseInt(id, 10) % 10 > 8 && player1.activeShip.name === 'submarine')
+      || (parseInt(id, 10) % 10 > 7 && player1.activeShip.name === 'cruiser')
+      || (parseInt(id, 10) % 10 > 6 && player1.activeShip.name === 'battleship')
+      || (parseInt(id, 10) % 10 > 5 && player1.activeShip.name === 'carrier')) {
+      return false;
     }
   } else if (!player1.activeShip.horizontalVertical) {
-    if ((player1.gameBoard.getCoordinateFromIndex(this.getAttribute('id')).coordinate[1] > 9 && player1.activeShip.name === 'destroyer')
-      || (player1.gameBoard.getCoordinateFromIndex(this.getAttribute('id')).coordinate[1] > 8 && player1.activeShip.name === 'submarine')
-      || (player1.gameBoard.getCoordinateFromIndex(this.getAttribute('id')).coordinate[1] > 7 && player1.activeShip.name === 'cruiser')
-      || (player1.gameBoard.getCoordinateFromIndex(this.getAttribute('id')).coordinate[1] > 6 && player1.activeShip.name === 'battleship')
-      || (player1.gameBoard.getCoordinateFromIndex(this.getAttribute('id')).coordinate[1] > 5 && player1.activeShip.name === 'carrier')
+    if ((player1.gameBoard.getCoordinateFromIndex(id).coordinate[1] > 9 && player1.activeShip.name === 'destroyer')
+      || (player1.gameBoard.getCoordinateFromIndex(id).coordinate[1] > 8 && player1.activeShip.name === 'submarine')
+      || (player1.gameBoard.getCoordinateFromIndex(id).coordinate[1] > 7 && player1.activeShip.name === 'cruiser')
+      || (player1.gameBoard.getCoordinateFromIndex(id).coordinate[1] > 6 && player1.activeShip.name === 'battleship')
+      || (player1.gameBoard.getCoordinateFromIndex(id).coordinate[1] > 5 && player1.activeShip.name === 'carrier')
     ) {
       canPlace = false;
     }
   }
 
   for (let i = 0; i < player1.activeShip.length; i++) {
-    if (player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10) + i}`).occupied) { canPlace = false; }
+    if (player1.gameBoard.getCoordinateFromIndex(`${parseInt(id, 10) + i}`).occupied) { return false; }
   }
 
-  if (canPlace) {
+  return true;
+}
+
+function placeShip() {
+  if (isValid(this.getAttribute('id'))) {
     player1.gameBoard.getCoordinateFromIndex(`${parseInt(this.getAttribute('id'), 10)}`).occupied = true;
     if (player1.activeShip.name === 'destroyer') {
       const front = createDiv();
@@ -205,6 +211,7 @@ function placeShip() {
     toggleShipsOverlayDisplay('none');
     toggleShipBoardOverlay('block');
     defaultOrientationButtonCopy();
+    toggleOrientationButtonDisabled(true);
   }
 }
 
