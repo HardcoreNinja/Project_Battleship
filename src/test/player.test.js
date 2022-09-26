@@ -138,12 +138,17 @@ test('updateOccupiedCoordinates | Works', () => {
   player.placeShip([0, 0]);
   expect(player.occupiedCoordinates[0][0].coordinate).toStrictEqual([0, 0]);
 
+  expect(player.occupiedShipMap.get('destroyer')[0].coordinate).toStrictEqual([0, 0]);
   player.selectShip('cruiser');
   player.changeOrientation();
   player.placeShip([2, 0]);
   expect(player.occupiedCoordinates[1][0].coordinate).toStrictEqual([2, 0]);
   expect(player.occupiedCoordinates[1][1].coordinate).toStrictEqual([2, 1]);
   expect(player.occupiedCoordinates[1][2].coordinate).toStrictEqual([2, 2]);
+
+  expect(player.occupiedShipMap.get('cruiser')[0].coordinate).toStrictEqual([2, 0]);
+  expect(player.occupiedShipMap.get('cruiser')[1].coordinate).toStrictEqual([2, 1]);
+  expect(player.occupiedShipMap.get('cruiser')[2].coordinate).toStrictEqual([2, 2]);
 });
 
 test('recieveFire | Working', () => {

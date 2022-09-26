@@ -12,6 +12,7 @@ class Player {
     this.battleshipCount = this.shipMap.get('battleship').length;
     this.carrierCount = this.shipMap.get('carrier').length;
     this.occupiedCoordinates = [];
+    this.occupiedShipMap = new Map();
     this.score = 0;
   }
 
@@ -105,6 +106,7 @@ class Player {
 
   updateOccupiedCoordinates(coordinateArray) {
     this.occupiedCoordinates.push(coordinateArray);
+    this.occupiedShipMap.set(`${this.activeShip.name}`, coordinateArray);
   }
 
   placeShip(coordinate) {
