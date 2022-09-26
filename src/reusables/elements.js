@@ -1,6 +1,14 @@
 function closeModal() {
   this.style.display = 'none';
 }
+
+function blockShipBoard(gridStart, gridEnd) {
+  const overlay = document.getElementById('shipBoardOverlay');
+  overlay.style.background = 'transparent';
+  overlay.style.gridRowStart = gridStart;
+  overlay.style.gridRowEnd = gridEnd;
+}
+
 const createDiv = () => document.createElement('div');
 const createButton = () => document.createElement('button');
 const createModal = (text) => {
@@ -16,4 +24,6 @@ const createModal = (text) => {
   content.append(bg);
 };
 
-export { createDiv, createButton, createModal };
+export {
+  createDiv, createButton, createModal, blockShipBoard,
+};

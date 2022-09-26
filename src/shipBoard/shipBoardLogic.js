@@ -1,5 +1,5 @@
 import { player1, ai } from '../game/gameLogic';
-import { createDiv, createModal } from '../reusables/elements';
+import { createDiv, createModal, blockShipBoard } from '../reusables/elements';
 
 function toggleShipsOverlayDisplay(display) {
   const overlay = document.getElementById('shipsOverlay');
@@ -199,13 +199,6 @@ function drawShipToShipBoard(activeShip, array, shipSquare) {
   }
 }
 
-function blockShipBoard() {
-  const overlay = document.getElementById('shipBoardOverlay');
-  overlay.style.background = 'transparent';
-  overlay.style.gridRowStart = '2';
-  overlay.style.gridRowEnd = '3';
-}
-
 function placeShip() {
   const array = this.getAttribute('id').split('S_');
   if (isValid(array[1])) {
@@ -223,13 +216,16 @@ function placeShip() {
       clearSelectedShip();
       setNoShipSelected();
       toggleHudOverlayDisplay('block');
-      blockShipBoard();
+      blockShipBoard('2', '3');
     }
   }
 }
 
 function checkForWinner() {
-  if (player1.score === 15) { createModal('Mission Succeeded! <br> Player Won!'); }
+  if (player1.score === 15) {
+    blockShipBoard('1', '3');
+    createModal('Mission Succeeded! <br> Player Won!');
+  }
 }
 
 function fire() {

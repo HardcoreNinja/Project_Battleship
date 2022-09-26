@@ -2,7 +2,7 @@
 
 const Player = require('./player');
 const GameBoard = require('./gameBoard');
-const { createDiv, createModal } = require('../reusables/elements');
+const { createDiv, createModal, blockShipBoard } = require('../reusables/elements');
 
 class AI {
   constructor() {
@@ -86,6 +86,7 @@ class AI {
 
   checkForWinner() {
     if (this.player.score === 15) {
+      blockShipBoard('1', '3');
       createModal('Mission Failed... <br> AI Won...');
     }
   }
