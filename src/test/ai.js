@@ -3,18 +3,13 @@
 const Player = require('./player');
 const GameBoard = require('./gameBoard');
 
-const LastOccupied = {
-  coordinate: null,
-  name: '',
-};
-
 class AI {
   constructor() {
     this.player = new Player();
     this.missleBoared = new GameBoard();
     this.visitedMap = new Map();
     this.placeShips();
-    this.lastOccupied = Object(LastOccupied);
+    this.lastOccupied = null;
   }
 
   selectShip(name) {
@@ -60,20 +55,49 @@ class AI {
     }
   }
 
+  analyzeLastOccupied(player = new Player()) {
+    for (let i = 0; i < player.occupiedShipMap.get(this.lastOccupied.shipName).length; i++) {
+      const index = player.gameBoard.getIndexOfCoordinate(
+        player.occupiedShipMap.get(this.lastOccupied.shipName)[i].coordinate,
+      );
+
+      if (!this.visitedMap.has(`${index}`)) {
+        this.visitedMap.set(`${index}`, true);
+        return index;
+      }
+    }
+
+    return null;
+  }
+
   fire(player = new Player()) {
     let index = Math.floor(Math.random() * 100);
     while (this.visitedMap.has(`${index}`)) {
       index = Math.floor(Math.random() * 100);
     }
 
-    const shipBoardSquare = document.querySelector(`#S_${index}`);
-    this.visitedMap.set(`${index}`, true);
-    if (player.gameBoard.getCoordinateFromIndex(index).occupied) {
-      this.lastOccupied.name = player.gameBoard.getCoordinateFromIndex(index).shipName;
-      this.lastOccupied.coordinate = player.gameBoard.getCoordinateFromIndex(index).coordinate;
-      shipBoardSquare.style.background = 'red';
+    let betterIndex = null;
+    if (this.lastOccupied !== null) { betterIndex = this.analyzeLastOccupied(player); }
+
+    if (betterIndex === null) {
+      this.lastOccupied = null;
+      const shipBoardSquare = document.querySelector(`#S_${index}`);
+      this.visitedMap.set(`${index}`, true);
+      if (player.gameBoard.getCoordinateFromIndex(index).occupied) {
+        this.lastOccupied = player.gameBoard.getCoordinateFromIndex(index);
+        shipBoardSquare.style.background = 'red';
+      } else {
+        shipBoardSquare.style.background = 'green';
+      }
     } else {
-      shipBoardSquare.style.background = 'green';
+      const shipBoardSquare = document.querySelector(`#S_${betterIndex}`);
+      this.visitedMap.set(`${betterIndex}`, true);
+      if (player.gameBoard.getCoordinateFromIndex(betterIndex).occupied) {
+        this.lastOccupied = player.gameBoard.getCoordinateFromIndex(betterIndex);
+        shipBoardSquare.style.background = 'red';
+      } else {
+        shipBoardSquare.style.background = 'green';
+      }
     }
   }
 }
