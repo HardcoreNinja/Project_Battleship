@@ -3,6 +3,34 @@
     margin: 0px;
 }
 
+#bgOverlay{
+    display: flex;
+    position: fixed; /* Stay in place */
+    background: rgba(0, 0, 0, .7);
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#modal{
+    display: flex;
+    flex-flow: column wrap;
+    place-content: center center;
+    place-items: center center;
+    background-color: white;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
 #content {
     display: grid;
     grid-template-columns: 3fr 1fr;

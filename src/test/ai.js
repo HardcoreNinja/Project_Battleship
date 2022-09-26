@@ -2,6 +2,7 @@
 
 const Player = require('./player');
 const GameBoard = require('./gameBoard');
+const { createDiv, createModal } = require('../reusables/elements');
 
 class AI {
   constructor() {
@@ -70,8 +71,23 @@ class AI {
     return null;
   }
 
+  createModal(text) {
+    const content = document.getElementById('content');
+    const bg = createDiv();
+    bg.setAttribute('id', 'bgOverlay');
+
+    const modal = createDiv();
+    modal.setAttribute('id', 'modal');
+    modal.innerHTML = text;
+    bg.append(modal);
+
+    content.append(bg);
+  }
+
   checkForWinner() {
-    if (this.player.score === 15) { alert('AI Won!'); }
+    if (this.player.score === 15) {
+      createModal('Mission Failed... <br> AI Won...');
+    }
   }
 
   fire(player = new Player()) {

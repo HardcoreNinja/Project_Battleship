@@ -1,5 +1,5 @@
 import { player1, ai } from '../game/gameLogic';
-import { createDiv } from '../reusables/elements';
+import { createDiv, createModal } from '../reusables/elements';
 
 function toggleShipsOverlayDisplay(display) {
   const overlay = document.getElementById('shipsOverlay');
@@ -229,7 +229,7 @@ function placeShip() {
 }
 
 function checkForWinner() {
-  if (player1.score === 15) { alert('Player Won!'); }
+  if (player1.score === 15) { createModal('Mission Succeeded! <br> Player Won!'); }
 }
 
 function fire() {
