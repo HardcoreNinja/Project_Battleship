@@ -43,7 +43,7 @@ function addShips(container) {
   }
 }
 
-const createships = () => {
+const createShips = () => {
   const container = createDiv();
   container.setAttribute('id', 'shipsContainer');
   const ships = createDiv();
@@ -92,7 +92,7 @@ function createHudOverlay() {
 function appendToHUD() {
   getHud().append(
     createOrientationButton(),
-    createships(),
+    createShips(),
     createShipsOverlay(),
     createSelectedShip(),
     createHudOverlay(),

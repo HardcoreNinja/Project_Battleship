@@ -199,6 +199,13 @@ function drawShipToShipBoard(activeShip, array, shipSquare) {
   }
 }
 
+function blockShipBoard() {
+  const overlay = document.getElementById('shipBoardOverlay');
+  overlay.style.background = 'transparent';
+  overlay.style.gridRowStart = '2';
+  overlay.style.gridRowEnd = '3';
+}
+
 function placeShip() {
   const array = this.getAttribute('id').split('S_');
   if (isValid(array[1])) {
@@ -216,9 +223,7 @@ function placeShip() {
       clearSelectedShip();
       setNoShipSelected();
       toggleHudOverlayDisplay('block');
-      toggleShipsOverlayDisplay('none');
-      const overlay = document.getElementById('shipBoardOverlay');
-      overlay.remove();
+      blockShipBoard();
     }
   }
 }
