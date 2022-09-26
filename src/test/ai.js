@@ -70,6 +70,10 @@ class AI {
     return null;
   }
 
+  checkForWinner() {
+    if (this.player.score === 15) { alert('AI Won!'); }
+  }
+
   fire(player = new Player()) {
     let index = Math.floor(Math.random() * 100);
     while (this.visitedMap.has(`${index}`)) {
@@ -86,6 +90,8 @@ class AI {
       if (player.gameBoard.getCoordinateFromIndex(index).occupied) {
         this.lastOccupied = player.gameBoard.getCoordinateFromIndex(index);
         shipBoardSquare.style.background = 'red';
+        this.player.score++;
+        this.checkForWinner();
       } else {
         shipBoardSquare.style.background = 'green';
       }
@@ -95,6 +101,8 @@ class AI {
       if (player.gameBoard.getCoordinateFromIndex(betterIndex).occupied) {
         this.lastOccupied = player.gameBoard.getCoordinateFromIndex(betterIndex);
         shipBoardSquare.style.background = 'red';
+        this.player.score++;
+        this.checkForWinner();
       } else {
         shipBoardSquare.style.background = 'green';
       }
