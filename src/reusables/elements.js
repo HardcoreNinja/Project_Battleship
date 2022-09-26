@@ -1,7 +1,6 @@
 function closeModal() {
   this.style.display = 'none';
 }
-
 const createDiv = () => document.createElement('div');
 const createButton = () => document.createElement('button');
 const createModal = (text) => {
