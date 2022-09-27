@@ -110,7 +110,7 @@ class AI {
         this.player.score++;
         this.checkForWinner();
       } else {
-        shipBoardSquare.style.background = 'green';
+        shipBoardSquare.style.background = 'white';
       }
     } else {
       const shipBoardSquare = document.querySelector(`#S_${betterIndex}`);
@@ -120,8 +120,6 @@ class AI {
         shipBoardSquare.style.background = 'red';
         this.player.score++;
         this.checkForWinner();
-      } else {
-        shipBoardSquare.style.background = 'green';
       }
     }
   }

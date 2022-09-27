@@ -72,7 +72,10 @@ function checkIfPlayerOutofShips() {
     && player1.submarineCount <= 0
     && player1.cruiserCount <= 0
     && player1.battleshipCount <= 0
-    && player1.carrierCount <= 0) { return true; }
+    && player1.carrierCount <= 0) {
+    toggleShipsOverlayDisplay('none');
+    return true;
+  }
 
   return false;
 }
@@ -235,11 +238,12 @@ function fire() {
   ai.player.receiveFire(ai.player.gameBoard.getCoordinateFromIndex(index).coordinate);
   if (ai.player.gameBoard.getCoordinateFromIndex(index).hit
   && ai.player.gameBoard.getCoordinateFromIndex(index).occupied) {
-    this.style.background = 'red';
+    this.style.background = 'rgb(196, 36, 63)';
+    this.style.borderColor = 'black';
     player1.score++;
     checkForWinner();
   } else {
-    this.style.background = 'yellow';
+    this.style.background = 'white';
   }
 
   ai.fire(player1);

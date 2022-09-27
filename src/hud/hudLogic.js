@@ -28,63 +28,43 @@ function setNoShipSelected() {
 function changeIconColor(name) {
   if (name === 'destroyer') {
     if (player1.destroyerCount <= 0) {
-      const destroyer = document.getElementById('destroyer');
-      destroyer.style.background = 'gray';
       const destroyerIcon = document.querySelector('.destroyerIcon');
-      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+      destroyerIcon.style.background = 'gray';
     } else if (player1.destroyerCount > 0) {
-      const destroyer = document.getElementById('destroyer');
-      destroyer.style.background = 'blue';
       const destroyerIcon = document.querySelector('.destroyerIcon');
-      destroyerIcon.style.background = 'red';
+      destroyerIcon.style.background = 'rgb(196 41 106)';
     }
   } else if (name === 'submarine') {
     if (player1.submarineCount <= 0) {
-      const destroyer = document.getElementById('submarine');
-      destroyer.style.background = 'gray';
-      const destroyerIcon = document.querySelector('.submarineIcon');
-      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+      const submarineIcon = document.querySelector('.submarineIcon');
+      submarineIcon.style.background = 'gray';
     } else if (player1.submarineCount > 0) {
-      const destroyer = document.getElementById('submarine');
-      destroyer.style.background = 'blue';
-      const destroyerIcon = document.querySelector('.submarineIcon');
-      destroyerIcon.style.background = 'red';
+      const submarineIcon = document.querySelector('.submarineIcon');
+      submarineIcon.style.background = 'rgb(196 41 106)';
     }
   } else if (name === 'cruiser') {
     if (player1.cruiserCount <= 0) {
-      const destroyer = document.getElementById('cruiser');
-      destroyer.style.background = 'gray';
-      const destroyerIcon = document.querySelector('.cruiserIcon');
-      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+      const cruiserIcon = document.querySelector('.cruiserIcon');
+      cruiserIcon.style.background = 'gray';
     } else if (player1.cruiserCount > 0) {
-      const destroyer = document.getElementById('cruiser');
-      destroyer.style.background = 'blue';
-      const destroyerIcon = document.querySelector('.cruiserIcon');
-      destroyerIcon.style.background = 'red';
+      const cruiserIcon = document.querySelector('.cruiserIcon');
+      cruiserIcon.style.background = 'rgb(196 41 106)';
     }
   } else if (name === 'battleship') {
     if (player1.battleshipCount <= 0) {
-      const destroyer = document.getElementById('battleship');
-      destroyer.style.background = 'gray';
-      const destroyerIcon = document.querySelector('.battleshipIcon');
-      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+      const battleshipIcon = document.querySelector('.battleshipIcon');
+      battleshipIcon.style.background = 'gray';
     } else if (player1.battleshipCount > 0) {
-      const destroyer = document.getElementById('battleship');
-      destroyer.style.background = 'blue';
-      const destroyerIcon = document.querySelector('.battleshipIcon');
-      destroyerIcon.style.background = 'red';
+      const battleshipIcon = document.querySelector('.battleshipIcon');
+      battleshipIcon.style.background = 'rgb(196 41 106)';
     }
   } else if (name === 'carrier') {
     if (player1.carrierCount <= 0) {
-      const destroyer = document.getElementById('carrier');
-      destroyer.style.background = 'gray';
-      const destroyerIcon = document.querySelector('.carrierIcon');
-      destroyerIcon.style.background = 'rgba(0,0,0,.5)';
+      const carrierIcon = document.querySelector('.carrierIcon');
+      carrierIcon.style.background = 'gray';
     } else if (player1.carrierCount > 0) {
-      const destroyer = document.getElementById('carrier');
-      destroyer.style.background = 'blue';
-      const destroyerIcon = document.querySelector('.carrierIcon');
-      destroyerIcon.style.background = 'red';
+      const carrierIcon = document.querySelector('.carrierIcon');
+      carrierIcon.style.background = 'rgb(196 41 106)';
     }
   }
 }
