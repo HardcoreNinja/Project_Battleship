@@ -1,3 +1,5 @@
+const getNav = () => document.getElementById('nav');
+
 const getContent = () => document.getElementById('content');
 
 const getShipBoard = () => document.getElementById('shipBoard');
@@ -5,5 +7,5 @@ const getShipBoard = () => document.getElementById('shipBoard');
 const getHud = () => document.getElementById('hud');
 
 export {
-  getContent, getShipBoard, getHud,
+  getNav, getContent, getShipBoard, getHud,
 };

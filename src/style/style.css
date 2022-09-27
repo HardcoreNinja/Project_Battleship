@@ -2,12 +2,39 @@
     font-family: 'Lato';
     src: url('../resources/fonts/Lato/Lato-Light.ttf');
 }
+@font-face {
+    font-family: 'LatoBold';
+    src: url('../resources/fonts/Lato/Lato-Bold.ttf');
+}
 
 * {
     padding: 0px;
     margin: 0px;
     font-family: 'Lato';
     color: white;
+}
+
+h1{
+    font-family: 'LatoBold';
+}
+
+:root{
+    background: rgb(36, 41, 46);
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 50px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
 }
 
 #bgOverlay{
@@ -30,7 +57,7 @@
     flex-flow: column wrap;
     place-content: center center;
     place-items: center center;
-    background-color: white;
+    background-color: rgb(36, 41, 46);
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -49,13 +76,17 @@
     ;
     min-width: 100vw;
     min-height: 100vh;
-    max-width: 100vw;
-    max-height: 100vh;
+    background: rgb(36, 41, 46);
 }
 
 #nav {
     grid-area: nav;
     background: rgb(29	31	34);
+    display: flex;
+    flex-flow: row wrap;
+    place-content: center center;
+    place-items: center center;
+    gap: 20px;
 }
 
 #shipBoard {
@@ -155,7 +186,7 @@
 
 #hud {
     grid-area: hud;
-    background: rgb(36,	41,	46);
+    background: rgb(36, 41, 46);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 2fr;
@@ -165,8 +196,6 @@
         'selectedShipContainer'
     ;
     gap: 20px;
-    max-width: 100vw;
-    max-height: 100vh;
 }
 
 #hudOverlay{
