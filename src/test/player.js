@@ -14,6 +14,7 @@ class Player {
     this.occupiedCoordinates = [];
     this.occupiedShipMap = new Map();
     this.score = 0;
+    this.visitedMap = new Map();
   }
 
   createShipMap() {

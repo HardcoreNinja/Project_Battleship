@@ -233,20 +233,22 @@ function checkForWinner() {
 
 function fire() {
   const array = this.getAttribute('id').split('M_');
-  const index = parseInt(array[1], 10);
-
-  ai.player.receiveFire(ai.player.gameBoard.getCoordinateFromIndex(index).coordinate);
-  if (ai.player.gameBoard.getCoordinateFromIndex(index).hit
+  if (!player1.visitedMap.has(`${array[1]}`)) {
+    player1.visitedMap.set(`${array[1]}`, true);
+    const index = parseInt(array[1], 10);
+    ai.player.receiveFire(ai.player.gameBoard.getCoordinateFromIndex(index).coordinate);
+    if (ai.player.gameBoard.getCoordinateFromIndex(index).hit
   && ai.player.gameBoard.getCoordinateFromIndex(index).occupied) {
-    this.style.background = 'rgb(196, 36, 63)';
-    this.style.borderColor = 'black';
-    player1.score++;
-    checkForWinner();
-  } else {
-    this.style.background = 'white';
-  }
+      this.style.background = 'rgb(196, 36, 63)';
+      this.style.borderColor = 'black';
+      player1.score++;
+      checkForWinner();
+    } else {
+      this.style.background = 'white';
+    }
 
-  ai.fire(player1);
+    ai.fire(player1);
+  }
 }
 
 export { placeShip, fire };

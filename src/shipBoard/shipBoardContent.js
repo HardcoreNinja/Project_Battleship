@@ -46,7 +46,7 @@ function createMissleBoard() {
     }
   }
 
-  container.append('Missle Board', board);
+  container.append('Missle Grid', board);
   return container;
 }
 

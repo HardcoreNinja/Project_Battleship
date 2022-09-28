@@ -8,7 +8,6 @@ class AI {
   constructor() {
     this.player = new Player();
     this.missleBoared = new GameBoard();
-    this.visitedMap = new Map();
     this.placeShips();
     this.lastOccupied = null;
   }
@@ -62,8 +61,8 @@ class AI {
         player.occupiedShipMap.get(this.lastOccupied.shipName)[i].coordinate,
       );
 
-      if (!this.visitedMap.has(`${index}`)) {
-        this.visitedMap.set(`${index}`, true);
+      if (!this.player.visitedMap.has(`${index}`)) {
+        this.player.visitedMap.set(`${index}`, true);
         return index;
       }
     }
@@ -93,7 +92,7 @@ class AI {
 
   fire(player = new Player()) {
     let index = Math.floor(Math.random() * 100);
-    while (this.visitedMap.has(`${index}`)) {
+    while (this.player.visitedMap.has(`${index}`)) {
       index = Math.floor(Math.random() * 100);
     }
 
@@ -103,7 +102,7 @@ class AI {
     if (betterIndex === null) {
       this.lastOccupied = null;
       const shipBoardSquare = document.querySelector(`#S_${index}`);
-      this.visitedMap.set(`${index}`, true);
+      this.player.visitedMap.set(`${index}`, true);
       if (player.gameBoard.getCoordinateFromIndex(index).occupied) {
         this.lastOccupied = player.gameBoard.getCoordinateFromIndex(index);
         shipBoardSquare.style.background = 'red';
@@ -114,7 +113,7 @@ class AI {
       }
     } else {
       const shipBoardSquare = document.querySelector(`#S_${betterIndex}`);
-      this.visitedMap.set(`${betterIndex}`, true);
+      this.player.visitedMap.set(`${betterIndex}`, true);
       if (player.gameBoard.getCoordinateFromIndex(betterIndex).occupied) {
         this.lastOccupied = player.gameBoard.getCoordinateFromIndex(betterIndex);
         shipBoardSquare.style.background = 'red';
