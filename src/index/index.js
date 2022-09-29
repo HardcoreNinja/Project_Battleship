@@ -1,3 +1,4 @@
+import '../head/head';
 import '../style/style.css';
 import '../grid/grid';
 import '../nav/navContent';
