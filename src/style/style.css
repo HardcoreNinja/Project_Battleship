@@ -74,9 +74,9 @@ h1{
         'nav nav'
         'shipBoard hud'
     ;
+    background: rgb(36, 41, 46);
     min-width: 100vw;
     min-height: 100vh;
-    background: rgb(36, 41, 46);
 }
 
 #nav {
@@ -99,6 +99,7 @@ h1{
         'missileGridContainer'
         'shipGridContainer'
     ;
+    min-height: 100vh;
 }
 
 #shipBoardOverlay {
@@ -196,6 +197,7 @@ h1{
         'selectedShipContainer'
     ;
     gap: 20px;
+    min-height: 100vh;
 }
 
 #hudOverlay{
