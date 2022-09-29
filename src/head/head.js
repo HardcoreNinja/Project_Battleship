@@ -1,4 +1,4 @@
-import favicon from '../resources/favicon/favicon.ico';
+import favicon from '../resources/ico/favicon.ico';
 
 function createFavicon() {
   const head = document.querySelector('head');
